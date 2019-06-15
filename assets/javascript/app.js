@@ -3,7 +3,7 @@ var latitude;
 var longitude;
 
 function ipLookUp() {
-    $.ajax('https://cors-anywhere.herokuapp.com/ip-api.com/json')
+    $.ajax('http://ip-api.com/json')
         .then(
             function success(response) {
                 console.log(response);
@@ -84,6 +84,7 @@ $(document).ready(function() {
                 } else {
                     console.log("It's closed now");
                 }
+                console.log("IMAGE LINK: " + response.businesses[i].image_url);
 
                 for (let j = 0; j < response.businesses[i].location.display_address.length; j++) {
                     console.log(response.businesses[i].location.display_address[j]);
