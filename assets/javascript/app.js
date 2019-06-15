@@ -33,18 +33,14 @@ if ("geolocation" in navigator) {
             // getAddress(position.coords.latitude,
             //     position.coords.longitude)
 
-            //show the location on map
-            // var adderss = "https://maps.google.com/maps?q=" + latitude + "," + longitude + "&hl=en&z=14&amp;output=embed";
-
-            // $(document.body).append($(`<iframe 
-            //         width="300" 
-            //         height="170" 
-            //         frameborder="0" 
-            //         scrolling="no" 
-            //         marginheight="0" 
-            //         marginwidth="0" 
-            //         src= ${adderss}
-            //                         ></iframe>`));
+            // Show the location on map using Google Maps API
+            //  I have the code ready, Code can be added later, to protect the API Code
+            $(document.body).append($(`<iframe 
+                    width="300" 
+                    height="200" 
+                    frameborder="0" 
+                    src= ${address3}
+                    allowfullscreen></iframe>`));
         },
         function error(error_message) {
             // for when getting location results in an error
