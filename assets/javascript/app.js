@@ -63,7 +63,7 @@ $(document).ready(function() {
     var restaurantURLBase = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/";
     $("#run-search").on("click", function() {
 
-        var restaurantURL = restaurantURLBase + "businesses/north-india-restaurant-san-francisco/reviews";
+        var restaurantURL = restaurantURLBase + "businesses/search?term=chinese&location=New York City";
         $.ajax({
             url: restaurantURL,
             method: "GET",
