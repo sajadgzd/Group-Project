@@ -1,69 +1,60 @@
-// code to retrieve the location of the user if neede: Please do not remove
+// code to retrieve the location of the user if needed: Please do not remove
+var latitude;
+var longitude;
 
+function ipLookUp() {
+    $.ajax('https://cors-anywhere.herokuapp.com/ip-api.com/json')
+        .then(
+            function success(response) {
+                console.log('Latitude ', response.lat);
+                latitude = response.lat;
+                console.log('Longitude ', response.lon);
+                longitude = response.lon;
+                // getAddress(response.lat, response.lon)
+            },
 
-// function ipLookUp() {
-//     $.ajax('http://ip-api.com/json')
-//         .then(
-//             function success(response) {
-//                 console.log('User\'s Location Data is ', response);
-//                 console.log('User\'s Country', response.country);
-//                 getAddress(response.lat, response.lon)
-//             },
-
-//             function fail(data, status) {
-//                 console.log('Request failed.  Returned status of',
-//                     status);
-//             }
-//         );
-// }
-
+            function fail(data, status) {
+                console.log('Request failed.  Returned status of',
+                    status);
+            }
+        );
+}
 // ipLookUp();
+if ("geolocation" in navigator) {
+    // check if geolocation is supported/enabled on current browser
+    navigator.geolocation.getCurrentPosition(
+        function success(position) {
+            // for when getting location is a success
+            console.log('Geo latitude', position.coords.latitude,
+                'Geo longitude', position.coords.longitude);
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+            // getAddress(position.coords.latitude,
+            //     position.coords.longitude)
+        },
+        function error(error_message) {
+            // for when getting location results in an error
+            console.error('An error has occured while retrieving' +
+                'location', error_message)
+            ipLookUp()
+        });
+} else {
+    // geolocation is not supported
+    // get your location some other way
+    console.log('geolocation is not enabled on this browser')
+    ipLookUp()
+}
 
-// function getAddress(latitude, longitude) {
-//     $.ajax('https://maps.googleapis.com/maps/api/geocode/json?' +
-//             'latlng=' + latitude + ',' + longitude + '&key=' +
-//             GOOGLE_MAP_KEY)
-//         .then(
-//             function success(response) {
-//                 console.log('User\'s Address Data is ', response)
-//             },
-//             function fail(status) {
-//                 console.log('Request failed.  Returned status of',
-//                     status)
-//             }
-//         )
-// }
-// if ("geolocation" in navigator) {
-//     // check if geolocation is supported/enabled on current browser
-//     navigator.geolocation.getCurrentPosition(
-//         function success(position) {
-//             // for when getting location is a success
-//             console.log('latitude', position.coords.latitude,
-//                 'longitude', position.coords.longitude);
-//             getAddress(position.coords.latitude,
-//                 position.coords.longitude)
-//         },
-//         function error(error_message) {
-//             // for when getting location results in an error
-//             console.error('An error has occured while retrieving' +
-//                 'location', error_message)
-//             ipLookUp()
-//         });
-// } else {
-//     // geolocation is not supported
-//     // get your location some other way
-//     console.log('geolocation is not enabled on this browser')
-//         // ipLookUp()
-// }
+
 
 // ALL CODES GOES INSIDE OF THIS FUNCTION::::::::::
 $(document).ready(function() {
 
-
+    // https: //api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972
     var restaurantURLBase = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/";
     $("#run-search").on("click", function() {
 
-        var restaurantURL = restaurantURLBase + "businesses/search?term=chinese&location=New York City";
+        var restaurantURL = restaurantURLBase + "businesses/search?term=chinese&latitude=" + latitude + "&longitude=" + longitude;
         $.ajax({
             url: restaurantURL,
             method: "GET",
