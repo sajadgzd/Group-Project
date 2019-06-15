@@ -35,12 +35,12 @@ if ("geolocation" in navigator) {
 
             // Show the location on map using Google Maps API
             //  I have the code ready, Code can be added later, to protect the API Code
-            $(document.body).append($(`<iframe 
-                    width="300" 
-                    height="200" 
-                    frameborder="0" 
-                    src= ${address3}
-                    allowfullscreen></iframe>`));
+            // $(document.body).append($(`<iframe 
+            //         width="300" 
+            //         height="200" 
+            //         frameborder="0" 
+            //         src= ${address3}
+            //         allowfullscreen></iframe>`));
         },
         function error(error_message) {
             // for when getting location results in an error
