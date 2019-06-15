@@ -73,7 +73,7 @@ $(document).ready(function() {
         }).then(function(response) {
             console.log(response);
             console.log(restaurantURL);
-            console.log(response.reviews[0].rating);
+            // console.log(response.reviews[0].rating);
 
         })
 
