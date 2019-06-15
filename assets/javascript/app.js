@@ -55,6 +55,8 @@
 //     console.log('geolocation is not enabled on this browser')
 //         // ipLookUp()
 // }
+
+// ALL CODES GOES INSIDE OF THIS FUNCTION::::::::::
 $(document).ready(function() {
 
 
