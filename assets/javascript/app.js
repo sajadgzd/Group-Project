@@ -1,4 +1,4 @@
-// code to retrieve the location of the user. PUT ALL YOUR CODES UNDER LINE 52
+// code to retrieve the location of the user. PUT ALL YOUR CODES UNDER LINE 67
 var latitude;
 var longitude;
 
@@ -6,6 +6,7 @@ function ipLookUp() {
     $.ajax('https://cors-anywhere.herokuapp.com/ip-api.com/json')
         .then(
             function success(response) {
+                console.log(response);
                 console.log('Latitude ', response.lat);
                 latitude = response.lat;
                 console.log('Longitude ', response.lon);
@@ -31,6 +32,19 @@ if ("geolocation" in navigator) {
             longitude = position.coords.longitude;
             // getAddress(position.coords.latitude,
             //     position.coords.longitude)
+
+            //show the location on map
+            // var adderss = "https://maps.google.com/maps?q=" + latitude + "," + longitude + "&hl=en&z=14&amp;output=embed";
+
+            // $(document.body).append($(`<iframe 
+            //         width="300" 
+            //         height="170" 
+            //         frameborder="0" 
+            //         scrolling="no" 
+            //         marginheight="0" 
+            //         marginwidth="0" 
+            //         src= ${adderss}
+            //                         ></iframe>`));
         },
         function error(error_message) {
             // for when getting location results in an error
@@ -44,6 +58,7 @@ if ("geolocation" in navigator) {
     console.log('geolocation is not enabled on this browser')
     ipLookUp()
 }
+
 
 
 
