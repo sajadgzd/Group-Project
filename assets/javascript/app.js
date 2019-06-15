@@ -73,8 +73,10 @@ $(document).ready(function() {
         }).then(function(response) {
             console.log(response);
             console.log(restaurantURL);
-            for (let i = 0; i < response.businesses[0].location.display_address.length; i++) {
-                console.log(response.businesses[0].location.display_address[i]);
+            for (let i = 0; i < 10; i++) {
+                for (let j = 0; j < response.businesses[i].location.display_address.length; j++) {
+                    console.log(response.businesses[i].location.display_address[j]);
+                }
             }
 
         })
