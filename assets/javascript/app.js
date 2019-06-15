@@ -77,6 +77,11 @@ $(document).ready(function() {
                 console.log("NAME: ", response.businesses[i].name);
                 console.log("PHONE NUMBER: ", response.businesses[i].display_phone);
                 console.log("PRICING RATE: ", response.businesses[i].price);
+                if (!response.businesses[i].is_closed) {
+                    console.log("It's open now!");
+                } else {
+                    console.log("It's closed now");
+                }
 
                 for (let j = 0; j < response.businesses[i].location.display_address.length; j++) {
                     console.log(response.businesses[i].location.display_address[j]);
