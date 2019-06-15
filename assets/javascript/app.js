@@ -47,7 +47,7 @@ if ("geolocation" in navigator) {
 
 
 
-// ALL CODES GOES INSIDE OF THIS FUNCTION::::::::::
+// ALL CODES GOES INSIDE OF THIS .ready() FUNCTION::::::::::
 $(document).ready(function() {
 
     // https: //api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972
