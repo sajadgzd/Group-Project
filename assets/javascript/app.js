@@ -34,7 +34,7 @@ if ("geolocation" in navigator) {
             //     position.coords.longitude)
 
             // Show the location on map using Google Maps API
-            //  I have the code ready, Code can be added later, to protect the API Code
+            //  I have the code for URL ready, Code can be added later, to protect the API Code
             // $(document.body).append($(`<iframe 
             //         width="300" 
             //         height="200" 
