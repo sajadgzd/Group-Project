@@ -55,3 +55,41 @@
 //     console.log('geolocation is not enabled on this browser')
 //         // ipLookUp()
 // }
+$(document).ready(function() {
+
+
+    var restaurantURLBase = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/";
+    $("#run-search").on("click", function() {
+
+        var restaurantURL = restaurantURLBase + "businesses/north-india-restaurant-san-francisco/reviews";
+        $.ajax({
+            url: restaurantURL,
+            method: "GET",
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer 3wWOAvaGNXrcyeiEyHu-LozubQFqCpPz8_zacZInc3dFC9Dqgy8yuMqUFwRoj9dnb1xhuNPqMP2tY1NTGiq60ACjN-cRCMfIViTZJYkuWvej58Glaemaz2Pv_1AEXXYx");
+            },
+        }).then(function(response) {
+            console.log(response);
+            console.log(restaurantURL);
+            console.log(response.reviews[0].rating);
+
+        })
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+});
