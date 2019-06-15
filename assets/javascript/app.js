@@ -74,6 +74,10 @@ $(document).ready(function() {
             console.log(response);
             console.log(restaurantURL);
             for (let i = 0; i < 10; i++) {
+                console.log("NAME: ", response.businesses[i].name);
+                console.log("PHONE NUMBER: ", response.businesses[i].display_phone);
+                console.log("PRICING RATE: ", response.businesses[i].price);
+
                 for (let j = 0; j < response.businesses[i].location.display_address.length; j++) {
                     console.log(response.businesses[i].location.display_address[j]);
                 }
