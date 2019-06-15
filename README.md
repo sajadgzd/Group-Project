@@ -1,3 +1,3 @@
 # Group-Project
-First Project at Columbia Bootcamp
+First Group Project at Columbia Bootcamp
 .
