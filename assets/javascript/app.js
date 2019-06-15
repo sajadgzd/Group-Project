@@ -73,7 +73,9 @@ $(document).ready(function() {
         }).then(function(response) {
             console.log(response);
             console.log(restaurantURL);
-            // console.log(response.reviews[0].rating);
+            for (let i = 0; i < response.businesses[0].location.display_address.length; i++) {
+                console.log(response.businesses[0].location.display_address[i]);
+            }
 
         })
 
