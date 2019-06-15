@@ -1,4 +1,4 @@
-// code to retrieve the location of the user if needed: Please do not remove. ALL CODES GOES UNDER LINE 52
+// code to retrieve the location of the user. PUT ALL YOUR CODES UNDER LINE 52
 var latitude;
 var longitude;
 
