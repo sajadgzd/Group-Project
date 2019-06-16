@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>IN OR OUT</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -31,6 +32,160 @@
 
 
     <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+            <div class="col-md-5 offset-md-3">
+                <a id="logo" href="#"><img src="../Screen Shot 2019-06-15 at 11.55.13 AM.png" alt="In or Out"></a>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon">
+            </span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Restaurants</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Recipes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Image Slider -->
+
+    <div id="slides" class="carousel slide" data-ride="carousel">
+        <ul class="carousel-indicators">
+            <li data-target="#slides" data-slide-to="0" class="active"></li>
+            <li data-target="#slides" data-slide-to="1"></li>
+            <li data-target="#slides" data-slide-to="2"></li>
+            <li data-target="#slides" data-slide-to="3"></li>
+        </ul>
+        <div class="container-fluid">
+            <div class="row jumbotron">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../cheeseburger.jpg " alt="cheeseburger ">
+                        <div class="carousel-caption">
+                            <h3 class="display-2">What Would You Like to Eat?</h3>
+                            <form class="form-inline">
+                                <div class="input-group mb-2 mr-sm-2">
+                                    <label class="sr-only" for="inlineFormSearch">Search</label>
+                                    <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputSearch" placeholder="Restaurants & Recipes">
+                                    <label class="sr-only" for="inlineFormInputZipCode">Zip Code</label>
+                                    <input type="text" class="form-control" id="inlineFormInputZipCode" placeholder="Zip Code">
+                                </div>
+                            </form>
+                            <button type="submit" class="btn btn-primary mb-2">I'm Starved!</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item ">
+                        <img src="../indianfood.jpg " alt="indian food ">
+                        <form class="form-inline">
+                            <div class="input-group mb-2 mr-sm-2">
+                                <label class="sr-only" for="inlineFormSearch">Search</label>
+                                <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputSearch" placeholder="Restaurants & Dishes">
+                                <label class="sr-only" for="inlineFormInputZipCode">Zip Code</label>
+                                <input type="text" class="form-control" id="inlineFormInputZipCode" placeholder="Zip Code">
+                            </div>
+                        </form>
+                        <button type="submit" class="btn btn-primary mb-2">I'm Starved!</button>
+                    </div>
+                    <div class="carousel-item ">
+                        <img src="../persianfood.jpg " alt="persian food ">
+                        <form class="form-inline">
+                            <div class="input-group mb-2 mr-sm-2">
+                                <label class="sr-only" for="inlineFormSearch">Search</label>
+                                <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputSearch" placeholder="Restaurants & Dishes">
+                                <label class="sr-only" for="inlineFormInputZipCode">Zip Code</label>
+                                <input type="text" class="form-control" id="inlineFormInputZipCode" placeholder="Zip Code">
+                            </div>
+                        </form>
+                        <button type="submit" class="btn btn-primary mb-2">I'm Starved!</button>
+                    </div>
+                    <div class="carousel-item ">
+                        <img src="../spaghetti.jpg " alt="italian food ">
+                        <form class="form-inline">
+                            <div class="input-group mb-2 mr-sm-2">
+                                <label class="sr-only" for="inlineFormSearch">Search</label>
+                                <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputSearch" placeholder="Restaurants & Dishes">
+                                <label class="sr-only" for="inlineFormInputZipCode">Zip Code</label>
+                                <input type="text" class="form-control" id="inlineFormInputZipCode" placeholder="Zip Code">
+                            </div>
+                        </form>
+                        <button type="submit" class="btn btn-primary mb-2">I'm Starved!</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Options -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 lazy">Feeling Lazy?</div>
+            <div class="col-md-5 offset-md-1 money">Save Money!</div>
+        </div>
+        <!-- Restaurants or Recipes -->
+
+        <div class="row">
+            <div class="col-md-5 retaurants">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio labore, sed expedita voluptas provident quisquam, cum nobis minus, totam aliquid nesciunt harum consequatur fugiat possimus esse soluta odit explicabo reiciendis. Lorem ipsum
+                dolor sit amet consectetur, adipisicing elit. Dolor accusamus molestias, ratione magni eius numquam dolores repellendus nulla facere eum! Eligendi dicta corporis dignissimos. Quae atque quis repudiandae rerum maiores. Lorem ipsum dolor
+                sit amet consectetur adipisicing elit. Id, blanditiis harum. Debitis labore quos odit! Tenetur dolorem, odio at blanditiis enim cupiditate velit non fugit doloremque animi nisi est eum? Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Repellendus ea harum, numquam ab eum vel commodi vero sapiente reprehenderit. Autem fugit nesciunt perspiciatis praesentium quia magnam at ea iure et.</div>
+            <div class="col-md-5 offset-md-1 recipes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae blanditiis saepe aut voluptate nostrum autem voluptatibus voluptatem illo dicta, id reprehenderit eaque odio sequi quod vero illum nihil quam quidem. Lorem ipsum dolor sit amet,
+                consectetur adipisicing elit. Reprehenderit, ut? Molestias nemo hic odio laborum reprehenderit, incidunt earum facilis optio! Asperiores delectus at neque saepe molestiae? Quas impedit nostrum eius! Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Repellat tempora voluptatum soluta beatae dignissimos? Quasi adipisci fugiat voluptatibus vero quam tempore iste aliquam officia corrupti ullam, deleniti, asperiores laudantium doloribus.</div>
+        </div>
+
+    </div>
+
+    <!-- Team -->
+
+    <div class="row text-center padding">
+        <div class="col-12">
+            <h2>Team</h2>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="container-fluid padding">
+        <div class="row text-center padding">
+            <div class="col-12">
+                <h2>Contact</h2>
+            </div>
+            <div class="col-12 social padding">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-snapchat"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+        <h5>&copy;In or Out</h5>
+    </footer>
 
 </body>
 
