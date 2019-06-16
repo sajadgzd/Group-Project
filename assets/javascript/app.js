@@ -64,8 +64,8 @@ $(document).ready(function() {
     // https: //api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972
     var restaurantURLBase = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/";
     $("#run-search").on("click", function() {
-
-        var restaurantURL = restaurantURLBase + "businesses/search?term=chinese&latitude=" + latitude + "&longitude=" + longitude;
+        var term = "chinese";
+        var restaurantURL = restaurantURLBase + "businesses/search?term=" + term + "&latitude=" + latitude + "&longitude=" + longitude;
         $.ajax({
             url: restaurantURL,
             method: "GET",
