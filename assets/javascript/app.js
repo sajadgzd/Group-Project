@@ -83,6 +83,46 @@ $(document).ready(function() {
     function clear() {
         $("#restaurant-section").empty();
     }
+
+    function updatePage(response) {
+        // Get from the form the number of results to display
+        // API doesn't have a "limit" parameter, so we have to do this ourselves
+        console.log(response);
+        console.log("------------------------------------");
+        for (let i = 0; i < 5; i++) {
+
+            // Getting Reviews
+            // console.log("ID# : ", response.businesses[i].id);
+            reviewURL = restaurantURLBase + response.businesses[i].id + "/reviews";
+            // console.log(reviewURL);
+            $.ajax({
+                url: reviewURL,
+                method: "GET",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Authorization", "Bearer 3wWOAvaGNXrcyeiEyHu-LozubQFqCpPz8_zacZInc3dFC9Dqgy8yuMqUFwRoj9dnb1xhuNPqMP2tY1NTGiq60ACjN-cRCMfIViTZJYkuWvej58Glaemaz2Pv_1AEXXYx");
+                },
+            }).then(function(response) {
+                console.log(response.reviews[0].text);
+            });
+
+            // Getting Business Info
+            console.log("NAME: ", response.businesses[i].name);
+            console.log("PHONE NUMBER: ", response.businesses[i].display_phone);
+            console.log("PRICING RATE: ", response.businesses[i].price);
+            if (!response.businesses[i].is_closed) {
+                console.log("It's open now!");
+            } else {
+                console.log("It's closed now");
+            }
+            console.log("IMAGE LINK: " + response.businesses[i].image_url);
+
+            for (let j = 0; j < response.businesses[i].location.display_address.length; j++) {
+                console.log(response.businesses[i].location.display_address[j]);
+            }
+        }
+
+    }
+
     // CLICK HANDLERS
     // ==========================================================
     // .on("click") function associated with the Search Button
@@ -103,45 +143,8 @@ $(document).ready(function() {
             beforeSend: function(xhr) {
                 xhr.setRequestHeader("Authorization", "Bearer 3wWOAvaGNXrcyeiEyHu-LozubQFqCpPz8_zacZInc3dFC9Dqgy8yuMqUFwRoj9dnb1xhuNPqMP2tY1NTGiq60ACjN-cRCMfIViTZJYkuWvej58Glaemaz2Pv_1AEXXYx");
             },
-        }).then(function(response) {
-            // console.log(response);
-
-            for (let i = 0; i < 5; i++) {
-
-                // Getting Reviews
-                // console.log("ID# : ", response.businesses[i].id);
-                reviewURL = restaurantURLBase + response.businesses[i].id + "/reviews";
-                // console.log(reviewURL);
-                $.ajax({
-                    url: reviewURL,
-                    method: "GET",
-                    beforeSend: function(xhr) {
-                        xhr.setRequestHeader("Authorization", "Bearer 3wWOAvaGNXrcyeiEyHu-LozubQFqCpPz8_zacZInc3dFC9Dqgy8yuMqUFwRoj9dnb1xhuNPqMP2tY1NTGiq60ACjN-cRCMfIViTZJYkuWvej58Glaemaz2Pv_1AEXXYx");
-                    },
-                }).then(function(response) {
-                    console.log(response.reviews[0].text);
-                });
-
-                // Getting Business Info
-                console.log("NAME: ", response.businesses[i].name);
-                console.log("PHONE NUMBER: ", response.businesses[i].display_phone);
-                console.log("PRICING RATE: ", response.businesses[i].price);
-                if (!response.businesses[i].is_closed) {
-                    console.log("It's open now!");
-                } else {
-                    console.log("It's closed now");
-                }
-                console.log("IMAGE LINK: " + response.businesses[i].image_url);
-
-                for (let j = 0; j < response.businesses[i].location.display_address.length; j++) {
-                    console.log(response.businesses[i].location.display_address[j]);
-                }
-            }
-
-        });
+        }).then(updatePage);
     });
-
-
 
 
 
