@@ -2,7 +2,7 @@
 var latitude;
 var longitude;
 var businessId = [];
-var reviewURL;
+var reviewURL = [];
 
 function ipLookUp() {
     $.ajax('http://ip-api.com/json')
@@ -94,22 +94,10 @@ $(document).ready(function() {
             var restaurantCount = i + 1;
             // Getting Reviews
             // console.log("ID# : ", response.businesses[i].id);
-            reviewURL = restaurantURLBase + response.businesses[i].id + "/reviews";
+            reviewURL[i] = restaurantURLBase + response.businesses[i].id + "/reviews";
             // console.log(reviewURL);
-            var restaurantList = $(`<ul data-number=${restaurantCount}>`);
-            $.ajax({
-                url: reviewURL,
-                method: "GET",
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader("Authorization", "Bearer 3wWOAvaGNXrcyeiEyHu-LozubQFqCpPz8_zacZInc3dFC9Dqgy8yuMqUFwRoj9dnb1xhuNPqMP2tY1NTGiq60ACjN-cRCMfIViTZJYkuWvej58Glaemaz2Pv_1AEXXYx");
-                },
-            }).then(function(response) {
-                console.log(restaurantCount)
-                console.log(response.reviews[0].text);
-                $(restaurantList).attr("data-number", restaurantCount).append(
-                    "<h4> Review:  " + response.reviews[0].text + "</h4>"
-                );
-            });
+            var restaurantList = $(`<ul>`);
+
 
             // Getting Business Info
 
@@ -120,7 +108,7 @@ $(document).ready(function() {
 
             // append to restaurantList
             var restaurantName = response.businesses[i].name;
-            var restaurantListItem = $(`<li class='list-group-item restaurantHeadName'>`);
+            var restaurantListItem = $(`<li class='list-group-item restaurantHeadName' data-number=${restaurantCount}>`);
             console.log("NAME: ", response.businesses[i].name);
             restaurantListItem.append(
                 "<span class='label label-primary'>" +
@@ -134,23 +122,23 @@ $(document).ready(function() {
             if (!response.businesses[i].is_closed) {
                 console.log("It's open now!");
                 restaurantListItem.append(
-                    "<h4> It's Open Now! </h4>"
+                    "<h4> It's <strong>Open</strong> Now! </h4>"
                 );
             } else {
                 console.log("It's closed now");
                 restaurantListItem.append(
-                    "<h4> It's Closed Now! </h4>"
+                    "<h4> It's <strong>Closed Now!</strong> </h4>"
                 );
             }
 
             console.log("PHONE NUMBER: ", response.businesses[i].display_phone);
             restaurantListItem.append(
-                "<h4> Phone Number:  " + response.businesses[i].display_phone + "</h4>"
+                "<h4> Phone Number: <strong> " + response.businesses[i].display_phone + "</strong></h4>"
             );
             console.log("PRICING RATE: ", response.businesses[i].price);
             if (response.businesses[i].price) {
                 restaurantListItem.append(
-                    "<h4> PRICING RATE:  " + response.businesses[i].price + "</h4>"
+                    "<h4> PRICING RATE: <strong> " + response.businesses[i].price + "</strong></h4>"
                 )
             }
 
@@ -158,7 +146,7 @@ $(document).ready(function() {
             //     console.log(response.businesses[i].location.display_address[j]);
             // }
             restaurantListItem.append(
-                "<h4> Address:  " + response.businesses[i].location.display_address.join(", ") + "</h4>"
+                "<h4> Address:  <strong>" + response.businesses[i].location.display_address.join(", ") + "</strong></h4>"
             )
 
             console.log("IMAGE LINK: " + response.businesses[i].image_url);
@@ -174,6 +162,22 @@ $(document).ready(function() {
 
 
         }
+
+        for (let i = 0; i < 5; i++) {
+            $.ajax({
+                url: reviewURL[i],
+                method: "GET",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Authorization", "Bearer 3wWOAvaGNXrcyeiEyHu-LozubQFqCpPz8_zacZInc3dFC9Dqgy8yuMqUFwRoj9dnb1xhuNPqMP2tY1NTGiq60ACjN-cRCMfIViTZJYkuWvej58Glaemaz2Pv_1AEXXYx");
+                },
+            }).then(function(response) {
+                console.log(response.reviews[0].text);
+                $(`li[data-number=${i+1}]`).append(
+                    "<h4> Review: <p> <strong> " + response.reviews[0].text + " </strong></p></h4>"
+                );
+            });
+        }
+
 
     }
 
