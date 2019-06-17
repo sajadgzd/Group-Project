@@ -148,9 +148,11 @@ $(document).ready(function() {
                 "<h4> Phone Number:  " + response.businesses[i].display_phone + "</h4>"
             );
             console.log("PRICING RATE: ", response.businesses[i].price);
-            restaurantListItem.append(
-                "<h4> PRICING RATE:  " + response.businesses[i].price + "</h4>"
-            )
+            if (response.businesses[i].price) {
+                restaurantListItem.append(
+                    "<h4> PRICING RATE:  " + response.businesses[i].price + "</h4>"
+                )
+            }
 
             // for (let j = 0; j < response.businesses[i].location.display_address.length; j++) {
             //     console.log(response.businesses[i].location.display_address[j]);
