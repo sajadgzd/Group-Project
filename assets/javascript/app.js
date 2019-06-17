@@ -65,10 +65,38 @@ $(document).ready(function() {
 
     // https: //api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972
     var restaurantURLBase = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/";
+    var term = "";
+    var restaurantURL;
 
-    $("#run-search").on("click", function() {
-        var term = "chinese";
-        var restaurantURL = restaurantURLBase + "search?term=" + term + "&latitude=" + latitude + "&longitude=" + longitude;
+    function restaurantQueryURL() {
+
+        // Grab text the user typed into the search input, add to the queryParams object
+        term = $("#search-term").val().trim();
+        restaurantURL = restaurantURLBase + "search?term=" + term + "&latitude=" + latitude + "&longitude=" + longitude;
+
+
+        // Logging the URL so we have access to it for troubleshooting
+        console.log("---------------\nURL: " + restaurantURL + "\n---------------");
+        return restaurantURL;
+    }
+    // Function to empty out the restaurants
+    function clear() {
+        $("#restaurant-section").empty();
+    }
+    // CLICK HANDLERS
+    // ==========================================================
+    // .on("click") function associated with the Search Button
+    $("#run-search").on("click", function(event) {
+        event.preventDefault();
+
+        // Empty the region associated with the articles
+        clear();
+
+        // Build the query URL for the ajax request to the NYT API
+        var restaurantURL = restaurantQueryURL();
+
+        // Make the AJAX request to the API - GETs the JSON data at the queryURL.
+        // The data then gets passed as an argument to the updatePage function
         $.ajax({
             url: restaurantURL,
             method: "GET",
@@ -111,9 +139,9 @@ $(document).ready(function() {
             }
 
         });
-
-
     });
+
+
 
 
 
