@@ -109,7 +109,7 @@ $(document).ready(function() {
             // append to restaurantList
             var restaurantName = response.businesses[i].name;
             var restaurantListItem = $(`<li class='list-group-item restaurantHeadName' data-number=${restaurantCount}>`);
-            console.log("NAME: ", response.businesses[i].name);
+            // console.log("NAME: ", response.businesses[i].name);
             restaurantListItem.append(
                 "<span class='label label-primary'>" +
                 restaurantCount +
@@ -120,22 +120,22 @@ $(document).ready(function() {
             );
 
             if (!response.businesses[i].is_closed) {
-                console.log("It's open now!");
+                // console.log("It's open now!");
                 restaurantListItem.append(
                     "<h4> It's <strong>Open</strong> Now! </h4>"
                 );
             } else {
-                console.log("It's closed now");
+                // console.log("It's closed now");
                 restaurantListItem.append(
                     "<h4> It's <strong>Closed Now!</strong> </h4>"
                 );
             }
 
-            console.log("PHONE NUMBER: ", response.businesses[i].display_phone);
+            // console.log("PHONE NUMBER: ", response.businesses[i].display_phone);
             restaurantListItem.append(
                 "<h4> Phone Number: <strong> " + response.businesses[i].display_phone + "</strong></h4>"
             );
-            console.log("Pricing Rate: ", response.businesses[i].price);
+            // console.log("Pricing Rate: ", response.businesses[i].price);
             if (response.businesses[i].price) {
                 restaurantListItem.append(
                     "<h4> Pricing Rate: <strong> " + response.businesses[i].price + "</strong></h4>"
@@ -149,9 +149,10 @@ $(document).ready(function() {
                 "<h4> Address:  <strong>" + response.businesses[i].location.display_address.join(", ") + "</strong></h4>"
             )
 
-            console.log("IMAGE LINK: " + response.businesses[i].image_url);
+            // console.log("IMAGE LINK: " + response.businesses[i].image_url);
             restaurantListItem.append(
-                `<img src='${response.businesses[i].image_url}' class='text-center'  style='height: 200px; width:300px; margin-left:13% ;'/>`
+                `<img src='${response.businesses[i].image_url}' img-lat=${response.businesses[i].coordinates.latitude} 
+                img-lon=${response.businesses[i].coordinates.longitude} class='text-center food-img' style='height: 200px; width:300px; margin-left:13% ;'/>`
             )
 
 
@@ -171,7 +172,8 @@ $(document).ready(function() {
                     xhr.setRequestHeader("Authorization", "Bearer 3wWOAvaGNXrcyeiEyHu-LozubQFqCpPz8_zacZInc3dFC9Dqgy8yuMqUFwRoj9dnb1xhuNPqMP2tY1NTGiq60ACjN-cRCMfIViTZJYkuWvej58Glaemaz2Pv_1AEXXYx");
                 },
             }).then(function(response) {
-                console.log(response.reviews[0].text);
+                console.log(response);
+                // console.log(response.reviews[0].text);
                 $(`li[data-number=${i+1}]`).append(
                     "<h4> Review: <p> <strong> " + response.reviews[0].text + " </strong></p></h4>"
                 );
@@ -207,6 +209,15 @@ $(document).ready(function() {
 
 
         $("#search-term").val("");
+    });
+
+    $(document.body).on("click", ".food-img", function(event) {
+        var lat = $(this).attr("img-lat");
+        var lon = $(this).attr("img-lon");
+        console.log(lat);
+        console.log(lon);
+
+
     });
 
 
