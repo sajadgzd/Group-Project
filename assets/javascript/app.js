@@ -204,6 +204,9 @@ $(document).ready(function() {
                 xhr.setRequestHeader("Authorization", "Bearer 3wWOAvaGNXrcyeiEyHu-LozubQFqCpPz8_zacZInc3dFC9Dqgy8yuMqUFwRoj9dnb1xhuNPqMP2tY1NTGiq60ACjN-cRCMfIViTZJYkuWvej58Glaemaz2Pv_1AEXXYx");
             },
         }).then(updatePage);
+
+
+        $("#search-term").val("");
     });
 
 
