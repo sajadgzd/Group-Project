@@ -239,44 +239,44 @@ $(document).ready(function() {
     // Make some function that tests to see if there's a space in the food item
     // ingr = food you're looking for
 
-// Runs on click of recipes and then search
+    // Runs on click of recipes and then search
 
-function recipeLooker(){
-    var recipe = $("#search-term").val();
-    console.log(recipe);
-    console.log("hellooooo");
+    function recipeLooker() {
+        var recipe = $("#search-term").val();
+        console.log(recipe);
+        console.log("hellooooo");
 
-    var recipePlace = $('<div>'); 
-// Replace all spaces in food with %20 because API uses URL-Encode 
-for(i=0; i < recipe.length; i++){
-    if(recipe[i] === " "){
-        console.log("hi");
-        recipe[i] = "%20";
-    }
-}
-
-
-$.ajax({
-    url: edamamLink + recipe + "&app_id=" + edamamId + "&app_key=" + edamamKey,
-    method: "GET"
-})
-
-.then(function(response){
-    console.log(response);
-
-    var recipes = response.data;
-    
-    // Double check if need to use closing tag stuff
-
-    for(i = 0; i < 5; i++){
-        var singleRecipe = $('<div id="indivRecipe">'); 
-        // Just put the data inside here
-        $("#indivRecipe").html(response.data);
-        recipePlace.append(singleRecipe);
-        recipePlace.appendTo("#restaurant-section");
-    }
-
+        var recipePlace = $('<div>');
+        // Replace all spaces in food with %20 because API uses URL-Encode 
+        for (i = 0; i < recipe.length; i++) {
+            if (recipe[i] === " ") {
+                console.log("hi");
+                recipe[i] = "%20";
             }
+        }
+
+
+        $.ajax({
+            url: edamamLink + recipe + "&app_id=" + edamamId + "&app_key=" + edamamKey,
+            method: "GET"
+        })
+
+        .then(function(response) {
+            console.log(response);
+
+            var recipes = response.data;
+
+            // Double check if need to use closing tag stuff
+
+            for (i = 0; i < 5; i++) {
+                var singleRecipe = $('<div id="indivRecipe">');
+                // Just put the data inside here
+                $("#indivRecipe").html(response.data);
+                recipePlace.append(singleRecipe);
+                recipePlace.appendTo("#restaurant-section");
+            }
+
+
 
 
 
