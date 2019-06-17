@@ -91,11 +91,12 @@ $(document).ready(function() {
         console.log(response);
         console.log("------------------------------------");
         for (let i = 0; i < 5; i++) {
-
+            var restaurantCount = i + 1;
             // Getting Reviews
             // console.log("ID# : ", response.businesses[i].id);
             reviewURL = restaurantURLBase + response.businesses[i].id + "/reviews";
             // console.log(reviewURL);
+            var restaurantList = $(`<ul data-number=${restaurantCount}>`);
             $.ajax({
                 url: reviewURL,
                 method: "GET",
@@ -103,23 +104,73 @@ $(document).ready(function() {
                     xhr.setRequestHeader("Authorization", "Bearer 3wWOAvaGNXrcyeiEyHu-LozubQFqCpPz8_zacZInc3dFC9Dqgy8yuMqUFwRoj9dnb1xhuNPqMP2tY1NTGiq60ACjN-cRCMfIViTZJYkuWvej58Glaemaz2Pv_1AEXXYx");
                 },
             }).then(function(response) {
+                console.log(restaurantCount)
                 console.log(response.reviews[0].text);
+                $(restaurantList).attr("data-number", restaurantCount).append(
+                    "<h4> Review:  " + response.reviews[0].text + "</h4>"
+                );
             });
 
             // Getting Business Info
+
+            restaurantList.addClass("list-group");
+
+            // Add the newly created element to the DOM
+            $("#restaurant-section").append(restaurantList);
+
+            // append to restaurantList
+            var restaurantName = response.businesses[i].name;
+            var restaurantListItem = $(`<li class='list-group-item restaurantHeadName'>`);
             console.log("NAME: ", response.businesses[i].name);
-            console.log("PHONE NUMBER: ", response.businesses[i].display_phone);
-            console.log("PRICING RATE: ", response.businesses[i].price);
+            restaurantListItem.append(
+                "<span class='label label-primary'>" +
+                restaurantCount +
+                "</span>" +
+                "<strong><h3>" +
+                restaurantName +
+                "</strong></h3>"
+            );
+
             if (!response.businesses[i].is_closed) {
                 console.log("It's open now!");
+                restaurantListItem.append(
+                    "<h4> It's Open Now! </h4>"
+                );
             } else {
                 console.log("It's closed now");
+                restaurantListItem.append(
+                    "<h4> It's Closed Now! </h4>"
+                );
             }
-            console.log("IMAGE LINK: " + response.businesses[i].image_url);
 
-            for (let j = 0; j < response.businesses[i].location.display_address.length; j++) {
-                console.log(response.businesses[i].location.display_address[j]);
-            }
+            console.log("PHONE NUMBER: ", response.businesses[i].display_phone);
+            restaurantListItem.append(
+                "<h4> Phone Number:  " + response.businesses[i].display_phone + "</h4>"
+            );
+            console.log("PRICING RATE: ", response.businesses[i].price);
+            restaurantListItem.append(
+                "<h4> PRICING RATE:  " + response.businesses[i].price + "</h4>"
+            )
+
+            // for (let j = 0; j < response.businesses[i].location.display_address.length; j++) {
+            //     console.log(response.businesses[i].location.display_address[j]);
+            // }
+            restaurantListItem.append(
+                "<h4> Address:  " + response.businesses[i].location.display_address.join(", ") + "</h4>"
+            )
+
+            console.log("IMAGE LINK: " + response.businesses[i].image_url);
+            restaurantListItem.append(
+                `<img src='${response.businesses[i].image_url}' style='height: 200px; width:300px;'/>`
+            )
+
+
+
+
+            //Add to the DOM
+            restaurantList.append(restaurantListItem);
+
+
         }
 
     }
@@ -150,78 +201,78 @@ $(document).ready(function() {
 
 
 
-// Edamam API
-// API id: b2b8d0a4	
-// API Key: bd57f73feb2c8d5694f586f9b86be099
-// href = "https://api.edamam.com/api/food-database/parser?..."
+    // Edamam API
+    // API id: b2b8d0a4	
+    // API Key: bd57f73feb2c8d5694f586f9b86be099
+    // href = "https://api.edamam.com/api/food-database/parser?..."
 
 
-// How to search for things with spaces
-// As an example, let’s say we want to find matches in the food database for a red apple. 
-// We then need to URL-encode this string.
-//  In this case, this means to just replace the spaces with %20,so it becomes “red%20apple” 
-//  Please note, that the quotation marks aren’t part of the string.
+    // How to search for things with spaces
+    // As an example, let’s say we want to find matches in the food database for a red apple. 
+    // We then need to URL-encode this string.
+    //  In this case, this means to just replace the spaces with %20,so it becomes “red%20apple” 
+    //  Please note, that the quotation marks aren’t part of the string.
 
 
-// ingr = the food you're looking for
+    // ingr = the food you're looking for
 
-// This is your link
-// 'https://api.edamam.com/api/food-database/parser?ingr=red%20apple&app_id={your app_id}&app_key={your app_key}'
+    // This is your link
+    // 'https://api.edamam.com/api/food-database/parser?ingr=red%20apple&app_id={your app_id}&app_key={your app_key}'
 
-// text = food
-// label = food
-
-
-// $.ajax({
-//     url: queryURL,
-//     method: "GET"
-// })
-
-var edamamLink = "https://api.edamam.com/api/food-database/parser?ingr=";
-var edamamKey = "bd57f73feb2c8d5694f586f9b86be099";
-var edamamId = "b2b8d0a4";
-var foodChoice = "";
-// Make some function that tests to see if there's a space in the food item
-// ingr = food you're looking for
+    // text = food
+    // label = food
 
 
-// Runs on click of recipes and then search
-function recipeLooker(food){
-// Replace all spaces in food with %20 because API uses URL-Encode 
-for(i=0; i < food.length; i++){
-    if(food[i] === " "){
-        food[i] = "%20";
+    // $.ajax({
+    //     url: queryURL,
+    //     method: "GET"
+    // })
+
+    var edamamLink = "https://api.edamam.com/api/food-database/parser?ingr=";
+    var edamamKey = "bd57f73feb2c8d5694f586f9b86be099";
+    var edamamId = "b2b8d0a4";
+    var foodChoice = "";
+    // Make some function that tests to see if there's a space in the food item
+    // ingr = food you're looking for
+
+
+    // Runs on click of recipes and then search
+    function recipeLooker(food) {
+        // Replace all spaces in food with %20 because API uses URL-Encode 
+        for (i = 0; i < food.length; i++) {
+            if (food[i] === " ") {
+                food[i] = "%20";
+            }
+        }
+
+
+        $.ajax({
+            url: edamamLink + food + "&app_id=" + edamamId + "&app_key=" + edamamKey,
+            method: "GET"
+        })
+
+        .then(function(response) {
+
+            var recipes = response.data;
+
+            var recipePlace = $('<div>');
+            // Double check if need to use closing tag stuff
+
+            for (i = 0; i < recipes.length; i++) {
+                var singleRecipe = $('<div id="indivRecipe">');
+                recipePlace.append(singleRecipe);
+
+
+
+
+            }
+
+
+
+        })
+
+
     }
-}
-
-
-$.ajax({
-    url: edamamLink + food + "&app_id=" + edamamId + "&app_key=" + edamamKey,
-    method: "GET"
-})
-
-.then(function(response){
-
-    var recipes = response.data;
-    
-    var recipePlace = $('<div>'); 
-    // Double check if need to use closing tag stuff
-
-    for(i = 0; i < recipes.length; i++){
-        var singleRecipe = $('<div id="indivRecipe">'); 
-        recipePlace.append(singleRecipe);
-
-
-
-
-    }
-
-
-
-})
-
-
-}
 
 
 
