@@ -151,7 +151,8 @@ $(document).ready(function() {
 
             // console.log("IMAGE LINK: " + response.businesses[i].image_url);
             restaurantListItem.append(
-                `<img src='${response.businesses[i].image_url}' img-lat=${response.businesses[i].coordinates.latitude} 
+                `<img src='${response.businesses[i].image_url}' data-num=${restaurantCount}
+                img-lat=${response.businesses[i].coordinates.latitude} 
                 img-lon=${response.businesses[i].coordinates.longitude} class='text-center food-img' style='height: 200px; width:300px; margin-left:13% ;'/>`
             )
 
@@ -214,9 +215,22 @@ $(document).ready(function() {
     $(document.body).on("click", ".food-img", function(event) {
         var lat = $(this).attr("img-lat");
         var lon = $(this).attr("img-lon");
+        var dataNum = $(this).attr("data-num");
         console.log(lat);
         console.log(lon);
 
+        // Show the location on map using Google Maps API
+        //  I have the code for URL ready, Code can be added later, to protect the API Code
+        var basicGoogleURL = "https://www.google.com/maps/embed/v1/place?";
+        var GoogleKey = "&key=AIzaSyDrxn_A75NUrlGA6RtTj1k5C1Axbc8S9QE";
+        var address3 = basicGoogleURL + "q=restaurant&center=" + lat + "," + lon + GoogleKey;
+        console.log(address3);
+        $(`li[data-number=${dataNum}]`).append($(`<iframe
+                    width="400" 
+                    height="250" 
+                    frameborder="0" 
+                    src= ${address3}
+                    allowfullscreen></iframe>`));
 
     });
 
