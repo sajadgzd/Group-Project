@@ -118,7 +118,78 @@ $(document).ready(function() {
 
 
 
+// Edamam API
+// API id: b2b8d0a4	
+// API Key: bd57f73feb2c8d5694f586f9b86be099
+// href = "https://api.edamam.com/api/food-database/parser?..."
 
+
+// How to search for things with spaces
+// As an example, let’s say we want to find matches in the food database for a red apple. 
+// We then need to URL-encode this string.
+//  In this case, this means to just replace the spaces with %20,so it becomes “red%20apple” 
+//  Please note, that the quotation marks aren’t part of the string.
+
+
+// ingr = the food you're looking for
+
+// This is your link
+// 'https://api.edamam.com/api/food-database/parser?ingr=red%20apple&app_id={your app_id}&app_key={your app_key}'
+
+// text = food
+// label = food
+
+
+// $.ajax({
+//     url: queryURL,
+//     method: "GET"
+// })
+
+var edamamLink = "https://api.edamam.com/api/food-database/parser?ingr=";
+var edamamKey = "bd57f73feb2c8d5694f586f9b86be099";
+var edamamId = "b2b8d0a4";
+var foodChoice = "";
+// Make some function that tests to see if there's a space in the food item
+// ingr = food you're looking for
+
+
+// Runs on click of recipes and then search
+function recipeLooker(food){
+// Replace all spaces in food with %20 because API uses URL-Encode 
+for(i=0; i < food.length; i++){
+    if(food[i] === " "){
+        food[i] = "%20";
+    }
+}
+
+
+$.ajax({
+    url: edamamLink + food + "&app_id=" + edamamId + "&app_key=" + edamamKey,
+    method: "GET"
+})
+
+.then(function(response){
+
+    var recipes = response.data;
+    
+    var recipePlace = $('<div>'); 
+    // Double check if need to use closing tag stuff
+
+    for(i = 0; i < recipes.length; i++){
+        var singleRecipe = $('<div id="indivRecipe">'); 
+        recipePlace.append(singleRecipe);
+
+
+
+
+    }
+
+
+
+})
+
+
+}
 
 
 
