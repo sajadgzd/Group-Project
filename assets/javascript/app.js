@@ -192,7 +192,7 @@ $(document).ready(function() {
 
         recipeLooker();
 
-        // Build the query URL for the ajax request to the NYT API
+        // Build the query URL for the ajax request to the YELP API
         var restaurantURL = restaurantQueryURL();
 
         // Make the AJAX request to the API - GETs the JSON data at the queryURL.
