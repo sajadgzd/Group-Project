@@ -135,10 +135,10 @@ $(document).ready(function() {
             restaurantListItem.append(
                 "<h4> Phone Number: <strong> " + response.businesses[i].display_phone + "</strong></h4>"
             );
-            console.log("PRICING RATE: ", response.businesses[i].price);
+            console.log("Pricing Rate: ", response.businesses[i].price);
             if (response.businesses[i].price) {
                 restaurantListItem.append(
-                    "<h4> PRICING RATE: <strong> " + response.businesses[i].price + "</strong></h4>"
+                    "<h4> Pricing Rate: <strong> " + response.businesses[i].price + "</strong></h4>"
                 )
             }
 
@@ -151,7 +151,7 @@ $(document).ready(function() {
 
             console.log("IMAGE LINK: " + response.businesses[i].image_url);
             restaurantListItem.append(
-                `<img src='${response.businesses[i].image_url}' style='height: 200px; width:300px;'/>`
+                `<img src='${response.businesses[i].image_url}' class='text-center'  style='height: 200px; width:300px; margin-left:13% ;'/>`
             )
 
 
