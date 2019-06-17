@@ -84,6 +84,7 @@ $(document).ready(function() {
         $("#restaurant-section").empty();
     }
 
+
     function updatePage(response) {
         // Get from the form the number of results to display
         // API doesn't have a "limit" parameter, so we have to do this ourselves
