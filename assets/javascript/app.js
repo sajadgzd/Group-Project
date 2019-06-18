@@ -32,17 +32,7 @@ if ("geolocation" in navigator) {
                 'Geo longitude', position.coords.longitude);
             latitude = position.coords.latitude;
             longitude = position.coords.longitude;
-            // getAddress(position.coords.latitude,
-            //     position.coords.longitude)
 
-            // Show the location on map using Google Maps API
-            //  I have the code for URL ready, Code can be added later, to protect the API Code
-            // $(document.body).append($(`<iframe 
-            //         width="300" 
-            //         height="200" 
-            //         frameborder="0" 
-            //         src= ${address3}
-            //         allowfullscreen></iframe>`));
         },
         function error(error_message) {
             // for when getting location results in an error
@@ -157,7 +147,7 @@ $(document).ready(function() {
                 `<img src='${response.businesses[i].image_url}' data-num=${restaurantCount}
                 param=${restaurantName.split(' ').join('+')}
                 img-lat=${response.businesses[i].coordinates.latitude} 
-                img-lon=${response.businesses[i].coordinates.longitude} class='text-center food-img' style='height: 200px; width:300px; margin-left:13% ;'/>`
+                img-lon=${response.businesses[i].coordinates.longitude} class='text-center food-img' style='height: 200px; width:300px; margin-left:15% ;'/>`
             )
 
 
