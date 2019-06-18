@@ -131,7 +131,7 @@ $(document).ready(function() {
 
             if (response.businesses[i].rating) {
                 restaurantListItem.append(
-                    "<h4> Rating: <strong> " + response.businesses[i].rating + "</strong></h4>"
+                    "<h4> Rating: <strong> " + response.businesses[i].rating + " out of 5.0</strong></h4>"
                 )
             }
 
