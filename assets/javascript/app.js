@@ -205,9 +205,11 @@ $(document).ready(function() {
 
         $("#search-term").val("");
     });
+    var newDivMap = $("<div>");
     //  click event for Google Maps
     $(document.body).on("click", ".food-img", function(event) {
 
+        newDivMap.empty();
         var lat = $(this).attr("img-lat");
         var lon = $(this).attr("img-lon");
         var dataNum = $(this).attr("data-num");
@@ -222,12 +224,15 @@ $(document).ready(function() {
         var GoogleKey = "key=AIzaSyDrxn_A75NUrlGA6RtTj1k5C1Axbc8S9QE";
         var mapAddress = basicGoogleURL + GoogleKey + "&q=" + restaurantQparam + "&center=" + lat + "," + lon;
         console.log(mapAddress);
-        $(`li[data-number=${dataNum}]`).append($(`<iframe
-                    width="400" 
-                    height="250" 
-                    frameborder="0" 
-                    src= ${mapAddress}
-                    allowfullscreen></iframe>`));
+        newDivMap = $("<div>");
+        newDivMap.append($(`<iframe
+        width="400" 
+        height="250" 
+        frameborder="0" 
+        src= ${mapAddress}
+        allowfullscreen></iframe>`));
+
+        $(`li[data-number=${dataNum}]`).append(newDivMap);
 
     });
 
