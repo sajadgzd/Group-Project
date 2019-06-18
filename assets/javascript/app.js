@@ -71,6 +71,8 @@ $(document).ready(function() {
     // Function to empty out the restaurants
     function clear() {
         $("#restaurant-section").empty();
+        $("#recepies-section").empty();
+
     }
 
 
@@ -316,11 +318,30 @@ $(document).ready(function() {
                 var singleRecipe = $('<div id="indivRecipe">');
                 var imgElement = $("<img>");
                 // Just put the data inside here
+                var name = $('<h3><strong>' + response.hits[i].recipe.label + '</strong></h3>');
+                singleRecipe.append(name);
+                var calories = $('<p>' + Math.round(response.hits[i].recipe.calories) + ' calories </p>');
+                singleRecipe.append(calories);
+
+                var instructions = response.hits[i].recipe.url;
+                var link = $('<a href="' + instructions + '">Steps</a>');
+                singleRecipe.append(link);
+
                 recipeImage = response.hits[i].recipe.image;
                 imgElement.attr("src", recipeImage);
                 singleRecipe.append(imgElement);
-                var name = $('<p>' + response.hits[i].recipe.label + '</p>');
-                singleRecipe.append(name);
+
+                singleRecipe.append('<h5>Ingredients</h5>');
+                for(j = 0; j < response.hits[i].recipe.ingredientLines.length; j++){
+                    var ingredients = $('<ul> <li>' + response.hits[i].recipe.ingredientLines[j] + '</li></ul>');
+                    singleRecipe.append(ingredients);
+                }
+                // singleRecipe.append('<h5>Nutritional Facts</h5>');
+                // for(h = 0; h < 9; h++){
+                //     var nutrition = response.hits[i].recipe.digest[h].label;
+                //     singleRecipe.append('<ul><li>Total ' + nutrition +  ' = ' + Math.round(response.hits[i].recipe.digest[h].total) + '</li>');
+                // }
+                
 
                 // $("#indivRecipe").html(response.data);
                 recipePlace.append(singleRecipe);
