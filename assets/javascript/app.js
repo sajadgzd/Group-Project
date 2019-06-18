@@ -13,7 +13,6 @@ function ipLookUp() {
                 latitude = response.lat;
                 console.log('Longitude ', response.lon);
                 longitude = response.lon;
-                // getAddress(response.lat, response.lon)
             },
 
             function fail(data, status) {
