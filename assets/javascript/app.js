@@ -2,7 +2,7 @@
 var latitude;
 var longitude;
 var businessId = [];
-var reviewURL;
+var reviewURL = [];
 
 function ipLookUp() {
     $.ajax('http://ip-api.com/json')
@@ -13,7 +13,6 @@ function ipLookUp() {
                 latitude = response.lat;
                 console.log('Longitude ', response.lon);
                 longitude = response.lon;
-                // getAddress(response.lat, response.lon)
             },
 
             function fail(data, status) {
@@ -32,17 +31,7 @@ if ("geolocation" in navigator) {
                 'Geo longitude', position.coords.longitude);
             latitude = position.coords.latitude;
             longitude = position.coords.longitude;
-            // getAddress(position.coords.latitude,
-            //     position.coords.longitude)
 
-            // Show the location on map using Google Maps API
-            //  I have the code for URL ready, Code can be added later, to protect the API Code
-            // $(document.body).append($(`<iframe 
-            //         width="300" 
-            //         height="200" 
-            //         frameborder="0" 
-            //         src= ${address3}
-            //         allowfullscreen></iframe>`));
         },
         function error(error_message) {
             // for when getting location results in an error
@@ -82,6 +71,8 @@ $(document).ready(function() {
     // Function to empty out the restaurants
     function clear() {
         $("#restaurant-section").empty();
+        $("#recepies-section").empty();
+
     }
 
 
@@ -94,22 +85,10 @@ $(document).ready(function() {
             var restaurantCount = i + 1;
             // Getting Reviews
             // console.log("ID# : ", response.businesses[i].id);
-            reviewURL = restaurantURLBase + response.businesses[i].id + "/reviews";
+            reviewURL[i] = restaurantURLBase + response.businesses[i].id + "/reviews";
             // console.log(reviewURL);
-            var restaurantList = $(`<ul data-number=${restaurantCount}>`);
-            $.ajax({
-                url: reviewURL,
-                method: "GET",
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader("Authorization", "Bearer 3wWOAvaGNXrcyeiEyHu-LozubQFqCpPz8_zacZInc3dFC9Dqgy8yuMqUFwRoj9dnb1xhuNPqMP2tY1NTGiq60ACjN-cRCMfIViTZJYkuWvej58Glaemaz2Pv_1AEXXYx");
-                },
-            }).then(function(response) {
-                console.log(restaurantCount)
-                console.log(response.reviews[0].text);
-                $(restaurantList).attr("data-number", restaurantCount).append(
-                    "<h4> Review:  " + response.reviews[0].text + "</h4>"
-                );
-            });
+            var restaurantList = $(`<ul>`);
+
 
             // Getting Business Info
 
@@ -118,10 +97,12 @@ $(document).ready(function() {
             // Add the newly created element to the DOM
             $("#restaurant-section").append(restaurantList);
 
+            // console.log(response.businesses[i].name);
+
             // append to restaurantList
             var restaurantName = response.businesses[i].name;
-            var restaurantListItem = $(`<li class='list-group-item restaurantHeadName'>`);
-            console.log("NAME: ", response.businesses[i].name);
+            var restaurantListItem = $(`<li class='list-group-item restaurantHeadName' data-number=${restaurantCount}>`);
+            // console.log("NAME: ", response.businesses[i].name);
             restaurantListItem.append(
                 "<span class='label label-primary'>" +
                 restaurantCount +
@@ -132,38 +113,50 @@ $(document).ready(function() {
             );
 
             if (!response.businesses[i].is_closed) {
-                console.log("It's open now!");
+                // console.log("It's open now!");
                 restaurantListItem.append(
-                    "<h4> It's Open Now! </h4>"
+                    "<h4> It's <strong>Open</strong> Now! </h4>"
                 );
             } else {
-                console.log("It's closed now");
+                // console.log("It's closed now");
                 restaurantListItem.append(
-                    "<h4> It's Closed Now! </h4>"
+                    "<h4> It's <strong>Closed Now!</strong> </h4>"
                 );
             }
-
-            console.log("PHONE NUMBER: ", response.businesses[i].display_phone);
-            restaurantListItem.append(
-                "<h4> Phone Number:  " + response.businesses[i].display_phone + "</h4>"
-            );
-            console.log("PRICING RATE: ", response.businesses[i].price);
+            // console.log("Pricing Rate: ", response.businesses[i].price);
             if (response.businesses[i].price) {
                 restaurantListItem.append(
-                    "<h4> PRICING RATE:  " + response.businesses[i].price + "</h4>"
+                    "<h4> Pricing Rate: <strong> " + response.businesses[i].price + "</strong></h4>"
                 )
             }
+
+            if (response.businesses[i].rating) {
+                restaurantListItem.append(
+                    "<h4> Rating: <strong> " + response.businesses[i].rating + "</strong> /5.0</h4>"
+                )
+            }
+
+            // console.log("PHONE NUMBER: ", response.businesses[i].display_phone);
+            restaurantListItem.append(
+                "<h4> Phone Number: <strong> " + response.businesses[i].display_phone + "</strong></h4>"
+            );
+
+
 
             // for (let j = 0; j < response.businesses[i].location.display_address.length; j++) {
             //     console.log(response.businesses[i].location.display_address[j]);
             // }
             restaurantListItem.append(
-                "<h4> Address:  " + response.businesses[i].location.display_address.join(", ") + "</h4>"
+                "<h4> Address:  <strong>" + response.businesses[i].location.display_address.join(", ") + "</strong></h4>"
             )
 
-            console.log("IMAGE LINK: " + response.businesses[i].image_url);
+            // console.log("IMAGE LINK: " + response.businesses[i].image_url);
             restaurantListItem.append(
-                `<img src='${response.businesses[i].image_url}' style='height: 200px; width:300px;'/>`
+                "<h6 class='text-center'> To see the location on Google Maps, click on the image below! </h6>" +
+                `<img src='${response.businesses[i].image_url}' data-num=${restaurantCount}
+                param=${restaurantName.split(' ').join('+')}
+                img-lat=${response.businesses[i].coordinates.latitude} 
+                img-lon=${response.businesses[i].coordinates.longitude} class='text-center food-img' style='height: 200px; width:300px; margin-left:15% ;'/>`
             )
 
 
@@ -174,6 +167,23 @@ $(document).ready(function() {
 
 
         }
+
+        for (let i = 0; i < 5; i++) {
+            $.ajax({
+                url: reviewURL[i],
+                method: "GET",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Authorization", "Bearer 3wWOAvaGNXrcyeiEyHu-LozubQFqCpPz8_zacZInc3dFC9Dqgy8yuMqUFwRoj9dnb1xhuNPqMP2tY1NTGiq60ACjN-cRCMfIViTZJYkuWvej58Glaemaz2Pv_1AEXXYx");
+                },
+            }).then(function(response) {
+                // console.log(response);
+                // console.log(response.reviews[0].text);
+                $(`li[data-number=${i+1}]`).append(
+                    "<h4> Review: <p> <strong> " + response.reviews[0].text + " </strong></p></h4>"
+                );
+            });
+        }
+
 
     }
 
@@ -188,7 +198,7 @@ $(document).ready(function() {
 
         recipeLooker();
 
-        // Build the query URL for the ajax request to the NYT API
+        // Build the query URL for the ajax request to the YELP API
         var restaurantURL = restaurantQueryURL();
 
         // Make the AJAX request to the API - GETs the JSON data at the queryURL.
@@ -200,6 +210,39 @@ $(document).ready(function() {
                 xhr.setRequestHeader("Authorization", "Bearer 3wWOAvaGNXrcyeiEyHu-LozubQFqCpPz8_zacZInc3dFC9Dqgy8yuMqUFwRoj9dnb1xhuNPqMP2tY1NTGiq60ACjN-cRCMfIViTZJYkuWvej58Glaemaz2Pv_1AEXXYx");
             },
         }).then(updatePage);
+
+
+        $("#search-term").val("");
+    });
+    var newDivMap = $("<div>");
+    //  click event for Google Maps
+    $(document.body).on("click", ".food-img", function(event) {
+
+        newDivMap.empty();
+        var lat = $(this).attr("img-lat");
+        var lon = $(this).attr("img-lon");
+        var dataNum = $(this).attr("data-num");
+        var restaurantQparam = $(this).attr("param");
+        // console.log(restaurantQparam);
+        console.log(lat);
+        console.log(lon);
+
+        // Show the location on map using Google Maps API
+        //  I have the code for URL ready, Code can be added later, to protect the API Code
+        var basicGoogleURL = "https://www.google.com/maps/embed/v1/place?";
+        var GoogleKey = "key=AIzaSyDrxn_A75NUrlGA6RtTj1k5C1Axbc8S9QE";
+        var mapAddress = basicGoogleURL + GoogleKey + "&q=" + restaurantQparam + "&center=" + lat + "," + lon;
+        console.log(mapAddress);
+        newDivMap = $("<div>");
+        newDivMap.append($(`<iframe
+        width="100%" 
+        height="350" 
+        frameborder="0" 
+        src= ${mapAddress}
+        allowfullscreen></iframe>`));
+
+        $(`li[data-number=${dataNum}]`).append(newDivMap);
+
     });
 
 
@@ -275,11 +318,30 @@ $(document).ready(function() {
                 var singleRecipe = $('<div id="indivRecipe">');
                 var imgElement = $("<img>");
                 // Just put the data inside here
+                var name = $('<h3><strong>' + response.hits[i].recipe.label + '</strong></h3>');
+                singleRecipe.append(name);
+                var calories = $('<p>' + Math.round(response.hits[i].recipe.calories) + ' calories </p>');
+                singleRecipe.append(calories);
+
+                var instructions = response.hits[i].recipe.url;
+                var link = $('<a href="' + instructions + '">Steps</a>');
+                singleRecipe.append(link);
+
                 recipeImage = response.hits[i].recipe.image;
                 imgElement.attr("src", recipeImage);
                 singleRecipe.append(imgElement);
-                var name = $('<p>' + response.hits[i].recipe.label + '</p>');
-                singleRecipe.append(name);
+
+                singleRecipe.append('<h5>Ingredients</h5>');
+                for(j = 0; j < response.hits[i].recipe.ingredientLines.length; j++){
+                    var ingredients = $('<ul> <li>' + response.hits[i].recipe.ingredientLines[j] + '</li></ul>');
+                    singleRecipe.append(ingredients);
+                }
+                // singleRecipe.append('<h5>Nutritional Facts</h5>');
+                // for(h = 0; h < 9; h++){
+                //     var nutrition = response.hits[i].recipe.digest[h].label;
+                //     singleRecipe.append('<ul><li>Total ' + nutrition +  ' = ' + Math.round(response.hits[i].recipe.digest[h].total) + '</li>');
+                // }
+                
 
                 // $("#indivRecipe").html(response.data);
                 recipePlace.append(singleRecipe);
