@@ -232,10 +232,12 @@ $(document).ready(function() {
     //     method: "GET"
     // })
 
-    var edamamLink = "https://api.edamam.com/api/food-database/parser?ingr=";
-    var edamamKey = "bd57f73feb2c8d5694f586f9b86be099";
-    var edamamId = "b2b8d0a4";
+    var edamamLink = "https://api.edamam.com/search?q=";
+    var edamamKey = "02b3dc4e32fc0237061d8bb43d5748e4";
+    var edamamId = "28d7bc82";
     var foodChoice = "";
+    var recipeImage;
+    
     // Make some function that tests to see if there's a space in the food item
     // ingr = food you're looking for
 
@@ -263,17 +265,25 @@ $(document).ready(function() {
 
         .then(function(response) {
             console.log(response);
+        
 
-            var recipes = response.data;
+            var recipes = response;
 
             // Double check if need to use closing tag stuff
 
             for (i = 0; i < 5; i++) {
                 var singleRecipe = $('<div id="indivRecipe">');
+                var imgElement = $("<img>");
                 // Just put the data inside here
-                $("#indivRecipe").html(response.data);
+                recipeImage = response.hits[i].recipe.image;
+                imgElement.attr("src", recipeImage);
+                singleRecipe.append(imgElement);
+                var name = $('<p>' + response.hits[i].recipe.label + '</p>');
+                singleRecipe.append(name);
+
+                // $("#indivRecipe").html(response.data);
                 recipePlace.append(singleRecipe);
-                recipePlace.appendTo("#restaurant-section");
+                recipePlace.appendTo("#recepies-section");
             }
 
 
