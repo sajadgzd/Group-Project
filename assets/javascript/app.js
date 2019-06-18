@@ -187,22 +187,6 @@ $(document).ready(function() {
 
     }
 
-    // function getName(response) {
-    //     console.log(response);
-    //     console.log("|||||||||||||||||||||||||||||||||||||");
-    //     for (let i = 0; i < 5; i++) {
-
-    //         // console.log(response.businesses[i].name);
-
-
-    //         var restaurantName = response.businesses[i].name;
-
-    //         // console.log(restaurantName.split(""));
-    //         console.log(restaurantName.split(' ').join('+'));
-    //         $(`img[data-num=${i+1}]`).attr("param", restaurantName.split(' ').join('+'));
-    //     }
-    // }
-
     // CLICK HANDLERS
     // ==========================================================
     // .on("click") function associated with the Search Button
@@ -227,14 +211,6 @@ $(document).ready(function() {
             },
         }).then(updatePage);
 
-        // $.ajax({
-        //     url: restaurantURL,
-        //     method: "GET",
-        //     beforeSend: function(xhr) {
-        //         xhr.setRequestHeader("Authorization", "Bearer 3wWOAvaGNXrcyeiEyHu-LozubQFqCpPz8_zacZInc3dFC9Dqgy8yuMqUFwRoj9dnb1xhuNPqMP2tY1NTGiq60ACjN-cRCMfIViTZJYkuWvej58Glaemaz2Pv_1AEXXYx");
-        //     },
-        // }).then(getName);
-
 
         $("#search-term").val("");
     });
@@ -245,7 +221,7 @@ $(document).ready(function() {
         var lon = $(this).attr("img-lon");
         var dataNum = $(this).attr("data-num");
         var restaurantQparam = $(this).attr("param");
-        console.log(restaurantQparam);
+        // console.log(restaurantQparam);
         console.log(lat);
         console.log(lon);
 
