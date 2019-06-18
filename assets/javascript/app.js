@@ -104,9 +104,9 @@ $(document).ready(function() {
             var restaurantListItem = $(`<li class='list-group-item restaurantHeadName' data-number=${restaurantCount}>`);
             // console.log("NAME: ", response.businesses[i].name);
             restaurantListItem.append(
-                "<span class='label label-primary'>" +
-                restaurantCount +
-                "</span>" +
+                // "<span class='label label-primary'>" +
+                // restaurantCount +
+                // "</span>" +
                 "<strong><h3 class='text-center'>" +
                 restaurantName +
                 "</strong></h3>"
@@ -245,10 +245,10 @@ $(document).ready(function() {
         var GoogleKey = "key=AIzaSyDrxn_A75NUrlGA6RtTj1k5C1Axbc8S9QE";
         var mapAddress = basicGoogleURL + GoogleKey + "&q=" + restaurantQparam + "&center=" + lat + "," + lon;
         console.log(mapAddress);
-        newDivMap = $("<div>");
+        newDivMap = $("<div style='margin-left: 18%;'>");
         newDivMap.append($(`<iframe
-        width="100%" 
-        height="350" 
+        width="300px" 
+        height="200px" 
         frameborder="0" 
         src= ${mapAddress}
         allowfullscreen></iframe>`));
@@ -344,7 +344,7 @@ $(document).ready(function() {
                 singleRecipe.append(imgElement);
 
                 singleRecipe.append('<h5>Ingredients</h5>');
-                for(j = 0; j < response.hits[i].recipe.ingredientLines.length; j++){
+                for (j = 0; j < response.hits[i].recipe.ingredientLines.length; j++) {
                     var ingredients = $('<ul> <li>' + response.hits[i].recipe.ingredientLines[j] + '</li></ul>');
                     singleRecipe.append(ingredients);
                 }
@@ -353,7 +353,7 @@ $(document).ready(function() {
                 //     var nutrition = response.hits[i].recipe.digest[h].label;
                 //     singleRecipe.append('<ul><li>Total ' + nutrition +  ' = ' + Math.round(response.hits[i].recipe.digest[h].total) + '</li>');
                 // }
-                
+
 
                 // $("#indivRecipe").html(response.data);
                 recipePlace.append(singleRecipe);

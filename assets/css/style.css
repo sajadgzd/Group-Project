@@ -1,17 +1,24 @@
-img.food-img {
-    padding: 50px;
-    transition: transform .2s;
-    width: 300px;
-    height: 200px;
-    margin: 0 auto;
-}
-
-img.food-img:hover {
-    opacity: 0.7;
-    -ms-transform: scale(1.5);
-    /* IE 9 */
-    -webkit-transform: scale(1.5);
-    /* Safari 3-8 */
-    transform: scale(1.5);
-    background-color: black;
-}
+    img.food-img {
+        padding: 50px;
+        transition: transform .2s;
+        width: 300px;
+        height: 200px;
+        margin: 0 auto;
+    }
+    
+    img.food-img:hover {
+        opacity: 0.7;
+        -ms-transform: scale(1.5);
+        /* IE 9 */
+        -webkit-transform: scale(1.5);
+        /* Safari 3-8 */
+        transform: scale(1.5);
+        background-color: black;
+    }
+    
+    .fade {
+        /* opacity: 0; */
+        -webkit-transition: opacity .15s linear;
+        -o-transition: opacity .15s linear;
+        transition: opacity .15s linear;
+    }
