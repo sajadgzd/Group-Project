@@ -215,7 +215,7 @@ $(document).ready(function() {
 
         $("#search-term").val("");
     });
-
+    //  click event for Google Maps
     $(document.body).on("click", ".food-img", function(event) {
 
         var lat = $(this).attr("img-lat");
