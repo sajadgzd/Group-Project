@@ -122,17 +122,25 @@ $(document).ready(function() {
                     "<h4> It's <strong>Closed Now!</strong> </h4>"
                 );
             }
-
-            // console.log("PHONE NUMBER: ", response.businesses[i].display_phone);
-            restaurantListItem.append(
-                "<h4> Phone Number: <strong> " + response.businesses[i].display_phone + "</strong></h4>"
-            );
             // console.log("Pricing Rate: ", response.businesses[i].price);
             if (response.businesses[i].price) {
                 restaurantListItem.append(
                     "<h4> Pricing Rate: <strong> " + response.businesses[i].price + "</strong></h4>"
                 )
             }
+
+            if (response.businesses[i].rating) {
+                restaurantListItem.append(
+                    "<h4> Rating: <strong> " + response.businesses[i].rating + "</strong></h4>"
+                )
+            }
+
+            // console.log("PHONE NUMBER: ", response.businesses[i].display_phone);
+            restaurantListItem.append(
+                "<h4> Phone Number: <strong> " + response.businesses[i].display_phone + "</strong></h4>"
+            );
+
+
 
             // for (let j = 0; j < response.businesses[i].location.display_address.length; j++) {
             //     console.log(response.businesses[i].location.display_address[j]);
