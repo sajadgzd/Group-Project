@@ -154,7 +154,8 @@ $(document).ready(function() {
                 `<img src='${response.businesses[i].image_url}' data-num=${restaurantCount}
                 param=${restaurantName.split(' ').join('+')}
                 img-lat=${response.businesses[i].coordinates.latitude} 
-                img-lon=${response.businesses[i].coordinates.longitude} class='text-center food-img' style='height: 200px; width:300px; margin-left:15% ;'/>`
+                img-lon=${response.businesses[i].coordinates.longitude} class='text-center food-img' style='height: 200px; width:300px; margin-left:15%;
+                border: 1px solid #ddd; border-radius: 8px; padding: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);'/>`
             )
 
 
@@ -177,7 +178,7 @@ $(document).ready(function() {
                 // console.log(response);
                 // console.log(response.reviews[0].text);
                 $(`li[data-number=${i+1}]`).append(
-                    "<h4> Review: <p> <strong> " + response.reviews[0].text + " </strong></p></h4>"
+                    "<h4 class='text-center'> Review: <p> <strong> " + response.reviews[0].text + " </strong></p></h4>"
                 );
             });
         }
@@ -278,7 +279,7 @@ $(document).ready(function() {
     var edamamId = "28d7bc82";
     var foodChoice = "";
     var recipeImage;
-    
+
     // Make some function that tests to see if there's a space in the food item
     // ingr = food you're looking for
 
@@ -306,7 +307,7 @@ $(document).ready(function() {
 
         .then(function(response) {
             console.log(response);
-        
+
 
             var recipes = response;
 
