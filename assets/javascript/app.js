@@ -105,38 +105,44 @@ $(document).ready(function() {
                 "<span class='label label-primary'>" +
                 restaurantCount +
                 "</span>" +
-                "<strong><h3>" +
+                "<strong><h3 class='text-center'>" +
                 restaurantName +
                 "</strong></h3>"
             );
+            var tempDiv = $("<div class='text-center'>");
+
 
             if (!response.businesses[i].is_closed) {
                 // console.log("It's open now!");
-                restaurantListItem.append(
-                    "<h4> It's <strong>Open</strong> Now! </h4>"
+                tempDiv.append(
+                    "<span class='text-center'>  <strong>Open</strong> Now! </span>"
                 );
             } else {
                 // console.log("It's closed now");
-                restaurantListItem.append(
-                    "<h4> It's <strong>Closed Now!</strong> </h4>"
+                tempDiv.append(
+                    "<span class='text-center'> It's <strong>Closed Now!</strong> </span>"
                 );
             }
             // console.log("Pricing Rate: ", response.businesses[i].price);
             if (response.businesses[i].price) {
-                restaurantListItem.append(
-                    "<h4> Pricing Rate: <strong> " + response.businesses[i].price + "</strong></h4>"
+                tempDiv.append(
+                    "<span class='text-center'> |  <i class='fas fa-money-bill-wave'></i><strong>  " + response.businesses[i].price + "</strong></span>"
                 )
             }
 
             if (response.businesses[i].rating) {
-                restaurantListItem.append(
-                    "<h4> Rating: <strong> " + response.businesses[i].rating + "</strong> /5.0</h4>"
+                tempDiv.append(
+                    "<span class='text-center'> |   <i class='fas fa-star'></i><strong>  " + response.businesses[i].rating + "</strong> /5.0</span>"
                 )
             }
 
+            restaurantListItem.append(tempDiv);
+
+            var tempDiv2 = $("<div class='text-center'>");
+
             // console.log("PHONE NUMBER: ", response.businesses[i].display_phone);
-            restaurantListItem.append(
-                "<h4> Phone Number: <strong> " + response.businesses[i].display_phone + "</strong></h4>"
+            tempDiv2.append(
+                "<span class='text-center'> <i class='fas fa-phone'></i><strong> " + response.businesses[i].display_phone + "</strong></span>"
             );
 
 
@@ -144,9 +150,11 @@ $(document).ready(function() {
             // for (let j = 0; j < response.businesses[i].location.display_address.length; j++) {
             //     console.log(response.businesses[i].location.display_address[j]);
             // }
-            restaurantListItem.append(
-                "<h4> Address:  <strong>" + response.businesses[i].location.display_address.join(", ") + "</strong></h4>"
+            tempDiv2.append(
+                "<span> |    <i class='fas fa-map-marker-alt'></i><strong>  " + response.businesses[i].location.display_address.join(", ") + "</strong></span>"
             )
+
+            restaurantListItem.append(tempDiv2);
 
             // console.log("IMAGE LINK: " + response.businesses[i].image_url);
             restaurantListItem.append(
@@ -179,7 +187,7 @@ $(document).ready(function() {
                 // console.log(response);
                 // console.log(response.reviews[0].text);
                 $(`li[data-number=${i+1}]`).append(
-                    "<h4 class='text-center'> Review: <p> <strong> " + response.reviews[0].text + " </strong></p></h4>"
+                    "<h5 class='text-center'> Review: <p> <i class='fas fa-comment'></i><strong> " + response.reviews[0].text + " </strong></p></h5>"
                 );
             });
         }
