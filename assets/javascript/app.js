@@ -191,7 +191,7 @@ $(document).ready(function() {
                 // console.log(response);
                 // console.log(response.reviews[0].text);
                 $(`li[data-number=${i+1}]`).append(
-                    "<h5 class='text-center'> Review: <p> <i class='fas fa-comment'></i><strong> " + response.reviews[0].text + " </strong></p></h5>"
+                    "<h5 class='text-center'> Yelp Review: <p> <i class='fas fa-comment'></i><strong> " + response.reviews[0].text + " </strong></p></h5>"
                 );
             });
         }
