@@ -226,8 +226,8 @@ $(document).ready(function() {
         console.log(mapAddress);
         newDivMap = $("<div>");
         newDivMap.append($(`<iframe
-        width="400" 
-        height="250" 
+        width="100%" 
+        height="350" 
         frameborder="0" 
         src= ${mapAddress}
         allowfullscreen></iframe>`));
