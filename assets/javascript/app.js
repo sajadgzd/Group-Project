@@ -106,7 +106,7 @@ $(document).ready(function() {
             // Add the newly created element to the DOM
             $("#restaurant-section").append(restaurantList);
 
-            console.log(response.businesses[i].name);
+            // console.log(response.businesses[i].name);
 
             // append to restaurantList
             var restaurantName = response.businesses[i].name;
@@ -154,8 +154,7 @@ $(document).ready(function() {
             // console.log("IMAGE LINK: " + response.businesses[i].image_url);
             restaurantListItem.append(
                 `<img src='${response.businesses[i].image_url}' data-num=${restaurantCount}
-                restaurantQparam=${restaurantName}
-
+                param=${restaurantName.split(' ').join('+')}
                 img-lat=${response.businesses[i].coordinates.latitude} 
                 img-lon=${response.businesses[i].coordinates.longitude} class='text-center food-img' style='height: 200px; width:300px; margin-left:13% ;'/>`
             )
@@ -188,6 +187,22 @@ $(document).ready(function() {
 
     }
 
+    // function getName(response) {
+    //     console.log(response);
+    //     console.log("|||||||||||||||||||||||||||||||||||||");
+    //     for (let i = 0; i < 5; i++) {
+
+    //         // console.log(response.businesses[i].name);
+
+
+    //         var restaurantName = response.businesses[i].name;
+
+    //         // console.log(restaurantName.split(""));
+    //         console.log(restaurantName.split(' ').join('+'));
+    //         $(`img[data-num=${i+1}]`).attr("param", restaurantName.split(' ').join('+'));
+    //     }
+    // }
+
     // CLICK HANDLERS
     // ==========================================================
     // .on("click") function associated with the Search Button
@@ -212,22 +227,25 @@ $(document).ready(function() {
             },
         }).then(updatePage);
 
+        // $.ajax({
+        //     url: restaurantURL,
+        //     method: "GET",
+        //     beforeSend: function(xhr) {
+        //         xhr.setRequestHeader("Authorization", "Bearer 3wWOAvaGNXrcyeiEyHu-LozubQFqCpPz8_zacZInc3dFC9Dqgy8yuMqUFwRoj9dnb1xhuNPqMP2tY1NTGiq60ACjN-cRCMfIViTZJYkuWvej58Glaemaz2Pv_1AEXXYx");
+        //     },
+        // }).then(getName);
+
 
         $("#search-term").val("");
     });
 
     $(document.body).on("click", ".food-img", function(event) {
+
         var lat = $(this).attr("img-lat");
         var lon = $(this).attr("img-lon");
         var dataNum = $(this).attr("data-num");
-        var restaurantQparam = $(this).attr("restaurantQparam");
-        // //making an embeddable name for google maps q parameter
-        // for (i = 0; i < restaurantName.length; i++) {
-        //     if (restaurantName[i] === " ") {
-        //         console.log("hi");
-        //         restaurantName[i] = "+";
-        //     }
-        // }
+        var restaurantQparam = $(this).attr("param");
+        console.log(restaurantQparam);
         console.log(lat);
         console.log(lon);
 
@@ -235,13 +253,13 @@ $(document).ready(function() {
         //  I have the code for URL ready, Code can be added later, to protect the API Code
         var basicGoogleURL = "https://www.google.com/maps/embed/v1/place?";
         var GoogleKey = "key=AIzaSyDrxn_A75NUrlGA6RtTj1k5C1Axbc8S9QE";
-        var address3 = basicGoogleURL + GoogleKey + "&q=" + restaurantQparam + "&center=" + lat + "," + lon;
-        console.log(address3);
+        var mapAddress = basicGoogleURL + GoogleKey + "&q=" + restaurantQparam + "&center=" + lat + "," + lon;
+        console.log(mapAddress);
         $(`li[data-number=${dataNum}]`).append($(`<iframe
                     width="400" 
                     height="250" 
                     frameborder="0" 
-                    src= ${address3}
+                    src= ${mapAddress}
                     allowfullscreen></iframe>`));
 
     });
