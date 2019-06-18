@@ -153,6 +153,7 @@ $(document).ready(function() {
 
             // console.log("IMAGE LINK: " + response.businesses[i].image_url);
             restaurantListItem.append(
+                "<h6 class='text-center'> To see the location on Google Maps, click on the image below! </h6>" +
                 `<img src='${response.businesses[i].image_url}' data-num=${restaurantCount}
                 param=${restaurantName.split(' ').join('+')}
                 img-lat=${response.businesses[i].coordinates.latitude} 
