@@ -7,6 +7,12 @@
   
 }
 
+#recepies-section {
+/*   max-height:2268px; */
+  min-height:2350px;
+
+}
+
 .flip-card {
   background-color: transparent;
   height: 435px;
@@ -14,7 +20,7 @@
 min-height:300px;
 
 
-  margin-bottom:7%;
+  margin-bottom:3%;
   border: 2px solid #f1f1f1;
   border-radius:6px;
   padding:5%;
