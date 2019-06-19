@@ -291,7 +291,7 @@ $(document).ready(function() {
         console.log(recipe);
         console.log("hellooooo");
 
-        var recipePlace = $('<div>');
+        // var recipePlace = $('<div>');
         // Replace all spaces in food with %20 because API uses URL-Encode 
         for (i = 0; i < recipe.length; i++) {
             if (recipe[i] === " ") {
@@ -315,38 +315,71 @@ $(document).ready(function() {
             // Double check if need to use closing tag stuff
 
             for (i = 0; i < 5; i++) {
-                var singleRecipe = $('<div id="indivRecipe">');
-                var imgElement = $("<img>");
-                // Just put the data inside here
+                var singleRecipe = $('<div id="indivRecipe" class="flip-card">');
+                
+
+                var singleRecipeHoldCards = $('<div class="flip-card-inner">');
+                var frontPic = $('<div class="flip-card-front" style="width:75%">');
+
+                var backIngredients = $('<div class="flip-card-back" style="width:75%">');
+
+
+                singleRecipeHoldCards.append(frontPic);
+                singleRecipeHoldCards.append(backIngredients);
+                singleRecipe.append(singleRecipeHoldCards);
+                
+
+                var imgElement = $('<img class="card-img-top">');
+                frontPic.append(imgElement);
+
+                
                 var name = $('<h3><strong>' + response.hits[i].recipe.label + '</strong></h3>');
-                singleRecipe.append(name);
+                
+                frontPic.append(name);
+                frontPic.append('<p class="hover"> Hover over to see ingredients and steps! </p>');
                 var calories = $('<p>' + Math.round(response.hits[i].recipe.calories) + ' calories </p>');
-                singleRecipe.append(calories);
+                frontPic.append(calories);
 
                 var instructions = response.hits[i].recipe.url;
-                var link = $('<a href="' + instructions + '">Steps</a>');
-                singleRecipe.append(link);
+                
 
                 recipeImage = response.hits[i].recipe.image;
                 imgElement.attr("src", recipeImage);
-                singleRecipe.append(imgElement);
+                frontPic.append(imgElement);
 
-                singleRecipe.append('<h5>Ingredients</h5>');
+                backIngredients.append('<h5>Ingredients</h5>');
                 for(j = 0; j < response.hits[i].recipe.ingredientLines.length; j++){
                     var ingredients = $('<ul> <li>' + response.hits[i].recipe.ingredientLines[j] + '</li></ul>');
-                    singleRecipe.append(ingredients);
+                    backIngredients.append(ingredients);
                 }
+
+                var link = $('<a href="' + instructions + '" class="btn btn-success" style="width:70%;">Steps</a>');
+                backIngredients.append(link);
+    
+                
+
                 // singleRecipe.append('<h5>Nutritional Facts</h5>');
                 // for(h = 0; h < 9; h++){
                 //     var nutrition = response.hits[i].recipe.digest[h].label;
                 //     singleRecipe.append('<ul><li>Total ' + nutrition +  ' = ' + Math.round(response.hits[i].recipe.digest[h].total) + '</li>');
                 // }
                 
-
+               
                 // $("#indivRecipe").html(response.data);
-                recipePlace.append(singleRecipe);
-                recipePlace.appendTo("#recepies-section");
+                // recipePlace.append(singleRecipe);
+                singleRecipe.appendTo("#recepies-section");
             }
+
+
+{/* <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div> */}
+
 
 
 
