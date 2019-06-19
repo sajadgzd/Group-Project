@@ -205,6 +205,13 @@ hr {
     right: -150px;
 }
 
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
 @media screen and (max-width: 990px) {
     #navBrand {
         position: relative;
