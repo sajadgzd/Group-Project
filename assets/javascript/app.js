@@ -166,7 +166,7 @@ $(document).ready(function() {
                 param=${restaurantName.split(' ').join('+')}
                 img-lat=${response.businesses[i].coordinates.latitude} 
 
-                img-lon=${response.businesses[i].coordinates.longitude} class='text-center food-img' style='margin-left:18%;
+                img-lon=${response.businesses[i].coordinates.longitude} class='text-center food-img' style='
                 border: 1px solid #ddd; border-radius: 8px; padding: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
                 transition: .5s ease; transform: translate(0, 0);'/>`
             )
@@ -245,7 +245,7 @@ $(document).ready(function() {
         var GoogleKey = "key=AIzaSyDrxn_A75NUrlGA6RtTj1k5C1Axbc8S9QE";
         var mapAddress = basicGoogleURL + GoogleKey + "&q=" + restaurantQparam + "&center=" + lat + "," + lon;
         console.log(mapAddress);
-        newDivMap = $("<div style='margin-left: 18%;'>");
+        newDivMap = $("<div>");
         newDivMap.append($(`<iframe
         width="300px" 
         height="200px" 
@@ -329,7 +329,7 @@ $(document).ready(function() {
             for (i = 0; i < 5; i++) {
          
                 var singleRecipe = $('<div id="indivRecipe" class="flip-card">');
-                
+
 
                 var singleRecipeHoldCards = $('<div class="flip-card-inner">');
                 var frontPic = $('<div class="flip-card-front" style="width:75%">');
@@ -340,21 +340,21 @@ $(document).ready(function() {
                 singleRecipeHoldCards.append(frontPic);
                 singleRecipeHoldCards.append(backIngredients);
                 singleRecipe.append(singleRecipeHoldCards);
-                
+
 
                 var imgElement = $('<img class="card-img-top">');
                 frontPic.append(imgElement);
 
-                
+
                 var name = $('<h3><strong>' + response.hits[i].recipe.label + '</strong></h3>');
-                
+
                 frontPic.append(name);
                 frontPic.append('<p class="hover"> Hover over to see ingredients and steps! </p>');
                 var calories = $('<p>' + Math.round(response.hits[i].recipe.calories) + ' calories </p>');
                 frontPic.append(calories);
 
                 var instructions = response.hits[i].recipe.url;
-                
+
 
                 recipeImage = response.hits[i].recipe.image;
                 imgElement.attr("src", recipeImage);
@@ -362,15 +362,14 @@ $(document).ready(function() {
 
 
                 backIngredients.append('<h5>Ingredients</h5>');
-                for(j = 0; j < response.hits[i].recipe.ingredientLines.length; j++){
+                for (j = 0; j < response.hits[i].recipe.ingredientLines.length; j++) {
                     var ingredients = $('<ul> <li>' + response.hits[i].recipe.ingredientLines[j] + '</li></ul>');
                     backIngredients.append(ingredients);
                 }
 
                 var link = $('<a href="' + instructions + '" class="btn btn-success" style="width:70%;">Steps</a>');
                 backIngredients.append(link);
-    
-                
+
                 // singleRecipe.append('<h5>Nutritional Facts</h5>');
                 // for(h = 0; h < 9; h++){
                 //     var nutrition = response.hits[i].recipe.digest[h].label;
@@ -383,14 +382,16 @@ $(document).ready(function() {
             }
 
 
-{/* <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div> */}
+            {
+                /* <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="..." alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div> */
+            }
 
 
 

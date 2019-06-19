@@ -1,10 +1,50 @@
+.dine-out,
+.save-money {
+    padding: 20px;
+}
 
-/* * The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */ */
+image.dine-out,
+image.save-money {
+    margin-bottom: 100px;
+}
 
-#indivRecipe {
-  position: relative;
-  margin:10px;
-  
+footer {
+    background: #343a40;
+    color: wheat;
+    font-size: 12px;
+    padding: 20px 20px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.rounded-circle {
+    width: 90%;
+    height: 200px;
+    border-radius: 8px !important;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.contact-form {
+    color: rgb(179, 104, 141);
+    text-shadow: .5px .5px rgb(80, 51, 51);
+    margin-top: 50px;
+    margin-bottom: 30px;
+    padding: 20px;
+    box-shadow: 0px 0px 5px 3px rgb(165, 99, 99);
+    background-image: url("../images/donuts.png");
+}
+
+
+/* * The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+
+body {
+    font-family: 'Mali', cursive;
+}
+
+*/ #indivRecipe {
+    position: relative;
+    margin: 10px;
 }
 
 #recepies-section {
@@ -14,6 +54,7 @@
 }
 
 .flip-card {
+
   background-color: transparent;
   height: 435px;
 /*   min-height:600px;  */
@@ -39,8 +80,26 @@ min-height:300px;
   width:90%;
 }
 
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+    /* border: 1px solid #f1f1f1; */
+    perspective: 1000px;
+    /* display:block; */
+    position: relative;
+    margin: 10px;
+}
+
+.carousel-caption {
+    padding-bottom: 80px;
+}
+
+
+
 /* This container is needed to position the front and back side */
+
 .flip-card-inner {
+
   width: 120%;
 
   position: relative;
@@ -51,20 +110,19 @@ min-height:300px;
   transition: transform 0.8s;
   transform-style: preserve-3d;
 
-
 }
+
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
+
 .flip-card:hover .flip-card-inner {
-  transform: rotateX(180deg);
-  /* width:100%;
-  height:100%;
-  position: absolute; */
- 
-  
+    transform: rotateX(180deg);
+
 }
 
+
 /* Position the front and back side */
+
 .flip-card-front, .flip-card-back {
   position: absolute;
   width: 100%; 
@@ -73,26 +131,26 @@ min-height:300px;
   border: 2% solid #f1f1f1;
   border-radius:2%;
  
+
 }
 
+
 /* Style the front side (fallback if image is missing) */
+
 .flip-card-front {
-/*   width:100%; */
   height:100%; 
   background-color: #d8dcd9;
   color: #590808;
   border: 2% solid #f1f1f1;
   border-radius:2%;
   padding:2%;
-/*   height:90%; */
-  
 
-  /* position:absolute; */
-  
+
 }
 
 
 /* Style the back side */
+
 .flip-card-back {
   overflow:scroll;
   max-height: 700px;
@@ -103,9 +161,9 @@ min-height:300px;
   padding:10px;
   border: 2% solid #f1f1f1;
   border-radius:2%;
-
-  /* position: absolute; */
 }
+
+
 
 /* .btn-success {
   background-color: limegreen
@@ -114,132 +172,150 @@ min-height:300px;
 } */
 
 .flip-card-front .hover {
-  font-size:11px;
-  font-weight:bold;
-  font-style:italic;
+    font-size: 11px;
+    font-weight: bold;
+    font-style: italic;
+}
 
+* {
+    font-family: 'Prata', serif;
+}
 
+img.food-img {
+    padding: 50px;
+    transition: transform .2s;
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+    margin-left: 18%;
+}
 
+iframe {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.021);
+    transition: .5s ease;
+    transform: translate(0, 0);
+    margin-left: 18%;
+}
+
+img.food-img:hover {
+    opacity: 0.7;
+    -ms-transform: scale(1.5);
+    /* IE 9 */
+    -webkit-transform: scale(1.5);
+    /* Safari 3-8 */
+    transform: scale(1.5);
+    background-color: black;
+}
+
+iframe:hover {
+    -ms-transform: scale(1.12);
+    /* IE 9 */
+    -webkit-transform: scale(1.12);
+    /* Safari 3-8 */
+    transform: scale(1.12);
+    background-color: black;
+}
+
+.dine-out,
+.save-money {
+    padding: 50px;
+}
+
+footer {
+    background: rgb(99, 1, 1);
+    color: wheat;
+    font-size: 12px;
+    padding: 20px 20px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.food_pic {
+    width: 100%;
+    height: 650px;
 }
 
 
-
-    * {
-        font-family: 'Prata', serif;
-    }
-    
-    img.food-img {
-        padding: 50px;
-        transition: transform .2s;
-        width: 300px;
-        height: 200px;
-        margin: 0 auto;
-    }
-    
-    iframe {
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 5px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.021);
-        transition: .5s ease;
-        transform: translate(0, 0);
-    }
-    
-    img.food-img:hover {
-        opacity: 0.7;
-        -ms-transform: scale(1.5);
-        /* IE 9 */
-        -webkit-transform: scale(1.5);
-        /* Safari 3-8 */
-        transform: scale(1.5);
-        background-color: black;
-    }
-    
-    iframe:hover {
-        -ms-transform: scale(1.12);
-        /* IE 9 */
-        -webkit-transform: scale(1.12);
-        /* Safari 3-8 */
-        transform: scale(1.12);
-        background-color: black;
-    }
-    
-    .dine-out,
-    .save-money {
-        padding: 50px;
-    }
-    
-    footer {
-        background: rgb(99, 1, 1);
-        color: wheat;
-        font-size: 12px;
-        padding: 20px 20px;
-        text-align: center;
-        border-radius: 4px;
-    }
-    
-    .food_pic {
-        width: 100%;
-        height: 650px;
-    }
-    /* body {
+/* body {
     background: rgb(143, 70, 70);
     background: linear-gradient(90deg, rgba(143, 70, 70, 0.4248074229691877) 0%, rgba(128, 130, 38, 1) 100%);
 } */
-    
-    .rounded-buttons {
-        border-radius: 8px !important;
-    }
-    
-    .rounded-circle {
-        width: 90%;
-        height: 200px;
-    }
-    
-    .myMargin {
-        margin: auto;
-    }
 
-    
-    .contact-form {
-        color: rgb(216, 124, 124);
-        margin-top: 100px;
-        margin-bottom: 30px;
-        padding: 20px;
-        box-shadow: 0px 0px 5px 3px rgb(165, 99, 99);
-        background-image: url("../images/donuts.png");
+.rounded-buttons {
+    border-radius: 8px !important;
+}
+
+.myMargin {
+    margin: auto;
+}
+
+hr {
+    margin-right: 900px;
+}
+
+.display-2 {
+    text-shadow: 2px 2px #ff0000;
+}
+
+#run-search {
+    color: rgb(29, 28, 28);
+    background: white;
+    font-size: 15px;
+}
+
+#navBrand {
+    margin: 0px auto;
+    position: relative;
+    right: -150px;
+}
+
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.card {
+    border-radius: 8px;
+}
+
+.card-header:first-child {
+    border-radius: 7px;
+}
+
+.card-body {
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 990px) {
+    #navBrand {
+        position: relative;
+        right: 0;
     }
-    
-    hr {
-        margin-right: 900px;
+    img.food-img {
+        margin-left: 10%;
+        width: 250px;
     }
-    
+    iframe {
+        width: 250px;
+        margin-left: 10%;
+    }
+    #contact-form {
+        width: 90%;
+    }
     .btn-block {
-        color: rgb(216, 124, 124);
+        color: rgb(202, 152, 185);
         background: white;
         font-size: 18px;
     }
-    
+    .food_pic {
+        height: 300px;
+    }
     .display-2 {
-        text-shadow: 2px 2px #ff0000;
+        font-size: 40px;
     }
-    
-    #run-search {
-        color: rgb(29, 28, 28);
-        background: white;
-        font-size: 15px;
-    }
-    
-    #navBrand {
-        margin: 0px auto;
-        position: relative;
-        right: -150px;
-    }
-    
-    @media screen and (max-width: 990px) {
-        #navBrand {
-            position: relative;
-            right: 0;
-        }
-    }
-
+}
