@@ -16,6 +16,10 @@
     margin: 10px;
 }
 
+.carousel-caption {
+    padding-bottom: 80px;
+}
+
 
 /* This container is needed to position the front and back side */
 
