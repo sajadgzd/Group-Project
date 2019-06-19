@@ -14,7 +14,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/3a6781b4ed.js"></script>
+
     <link href="https://fonts.googleapis.com/css?family=Mali&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -52,16 +54,16 @@
                         <a class="nav-link" href="#top">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#search-term">Restaurants</a>
+                        <a class="nav-link" href="index.html">Restaurants</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#search-term">Recipes</a>
+                        <a class="nav-link" href="index.html">Recipes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Team</a>
+                        <a class="nav-link" href="team.html">Team</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact-form">Contact</a>
+                        <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -115,7 +117,7 @@
                     <img src="assets/images/persian.jpg" alt="persian food" class='food_pic'>
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/images/french-dessert.jpg" alt="dessert" class='food_pic'>
+                    <img src="assets/images/fancydessert.jpg" alt="dessert" class='food_pic'>
                 </div>
                 <div class="carousel-caption">
                     <h3 class="display-2">What Would You Like to Eat?</h3>
@@ -136,51 +138,75 @@
 
     <div class="container">
         <div class="row ">
-            <div class="col-md-6 dine-out">
+            <div class="col-md-6 dine-out restaurants">
                 <img src="assets/images/diningout.jpeg" alt="Dine out" class="rounded-circle">
-
-            </div>
-            <div class="col-md-6 save-money">
-                <img src="assets/images/recipes.jpg" alt="Recipes" class="rounded-circle">
-            </div>
-        </div>
-        <!-- Restaurants or Recipes -->
-
-        <div class="row">
-            <div class="col-md-6 retaurants">
+                <br>
                 <div class="card">
                     <!-- card Heading for the retrieved articles box -->
                     <div class="card-header text-center" style="background-color:#9b231b; color:white;">
                         <strong>
-                            Restaurants Nearby
-                             </strong>
+                                Restaurants Nearby
+                                 </strong>
                     </div>
                     <!-- This main card will hold each of the resulting articles -->
                     <div class="card-body" id="restaurant-section">
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 recipes">
+            <div class="col-md-6 save-money recipes">
+                <img src="assets/images/recipes.jpg" alt="Recipes" class="rounded-circle">
+                <br>
                 <div class="card ">
                     <!-- card Heading for the retrieved articles box -->
                     <div class="card-header text-center" style="background-color:#9b231b; color:white;">
                         <strong>
-                            Recipes
-                             </strong>
+                                Recipes
+                                 </strong>
                     </div>
                     <!-- This main card will hold each of the resulting articles -->
                     <div class="card-body" id="recepies-section">
                     </div>
                 </div>
             </div>
-
         </div>
+        <!-- Restaurants or Recipes -->
+
+
+        <!-- <div class="row"> -->
+        <!-- <div class="col-md-6 retaurants">
+                <div class="card">
+                    card Heading for the retrieved articles box
+        <div class="card-header"> -->
+        <!-- <strong>
+                            Restaurants Nearby
+                             </strong>
+                    </div> -->
+        <!-- This main card will hold each of the resulting articles -->
+        <!-- <div class="card-body" id="restaurant-section">
+                    </div>
+                </div>
+            </div> -->
+        <!-- <div class="col-md-6 recipes"> -->
+        <!-- <div class="card ">
+            card Heading for the retrieved articles box
+            <div class="card-header">
+                <strong> -->
+        <!-- Recipes
+                             </strong>
+            </div> -->
+        <!-- This main card will hold each of the resulting articles -->
+        <!-- <div class="card-body" id="recepies-section">
+            </div>
+        </div> -->
+        <!-- </div> -->
 
     </div>
 
+
+
     <!-- Contact Info -->
 
-    <div class="container contact-form" id="contact-form">
+    <!-- <div class="container contact-form" id="contact-form">
         <h1>Contact Us!</h1>
         <hr>
 
@@ -211,7 +237,7 @@
         <div class="form-group">
             <button class="btn btn-primary btn-block"> <strong>Send</strong></button>
         </div>
-    </div>
+    </div> -->
 
     <!-- Footer -->
 

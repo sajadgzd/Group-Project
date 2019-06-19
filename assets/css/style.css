@@ -1,3 +1,48 @@
+
+    
+    
+  
+    
+    .dine-out,
+    .save-money {
+        padding: 20px;
+    }
+    
+    image.dine-out,
+    image.save-money {
+        margin-bottom: 100px;
+    }
+
+    
+    footer {
+        background: #343a40;
+        color: wheat;
+        font-size: 12px;
+        padding: 20px 20px;
+        text-align: center;
+        border-radius: 4px;
+    }
+
+
+    
+    
+    .rounded-circle {
+        width: 90%;
+        height: 200px;
+        border-radius: 8px !important;
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .contact-form {
+        color: rgb(179, 104, 141);
+        text-shadow: .5px .5px rgb(80, 51, 51);
+        margin-top: 50px;
+        margin-bottom: 30px;
+        padding: 20px;
+        box-shadow: 0px 0px 5px 3px rgb(165, 99, 99);
+        background-image: url("../images/donuts.png");
+
 /* * The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 
 body {
@@ -168,34 +213,18 @@ footer {
     border-radius: 8px !important;
 }
 
-.rounded-circle {
-    width: 90%;
-    height: 200px;
-    border-radius: 8px !important;
-}
 
 .myMargin {
     margin: auto;
 }
 
-.contact-form {
-    color: rgb(216, 124, 124);
-    margin-top: 100px;
-    margin-bottom: 30px;
-    padding: 20px;
-    box-shadow: 0px 0px 5px 3px rgb(165, 99, 99);
-    background-image: url("../images/donuts.png");
-}
+
 
 hr {
     margin-right: 900px;
 }
 
-.btn-block {
-    color: rgb(216, 124, 124);
-    background: white;
-    font-size: 18px;
-}
+
 
 .display-2 {
     text-shadow: 2px 2px #ff0000;
@@ -245,10 +274,22 @@ hr {
         width: 250px;
         margin-left: 10%;
     }
+   #contact-form {
+            width: 90%;
+        }
+
+    
+    .btn-block {
+        color: rgb(202, 152, 185);
+        background: white;
+        font-size: 18px;
+
     .food_pic {
         height: 300px;
     }
     .display-2 {
         font-size: 40px;
     }
+
 }
+
