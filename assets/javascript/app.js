@@ -87,7 +87,7 @@ $(document).ready(function() {
             // console.log("ID# : ", response.businesses[i].id);
             reviewURL[i] = restaurantURLBase + response.businesses[i].id + "/reviews";
             // console.log(reviewURL);
-            var restaurantList = $(`<ul  data-aos='fade-right' data-aos-duration="3000">`);
+            var restaurantList = $(`<ul  data-aos='fade-right' data-aos-duration="2000">`);
 
 
             // Getting Business Info
@@ -328,7 +328,7 @@ $(document).ready(function() {
 
             for (i = 0; i < 5; i++) {
 
-                var singleRecipe = $('<div id="indivRecipe" class="flip-card"  data-aos="fade-left" data-aos-duration="3000">');
+                var singleRecipe = $('<div id="indivRecipe" class="flip-card"  data-aos="fade-left" data-aos-duration="2000">');
 
 
                 var singleRecipeHoldCards = $('<div class="flip-card-inner">');
