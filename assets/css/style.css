@@ -163,6 +163,7 @@ footer {
 .rounded-circle {
     width: 90%;
     height: 200px;
+    border-radius: 8px !important;
 }
 
 .myMargin {
