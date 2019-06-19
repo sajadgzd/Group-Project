@@ -327,6 +327,7 @@ $(document).ready(function() {
             // Double check if need to use closing tag stuff
 
             for (i = 0; i < 5; i++) {
+         
                 var singleRecipe = $('<div id="indivRecipe" class="flip-card">');
 
 
@@ -368,8 +369,6 @@ $(document).ready(function() {
 
                 var link = $('<a href="' + instructions + '" class="btn btn-success" style="width:70%;">Steps</a>');
                 backIngredients.append(link);
-
-
 
                 // singleRecipe.append('<h5>Nutritional Facts</h5>');
                 // for(h = 0; h < 9; h++){
