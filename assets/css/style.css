@@ -216,6 +216,18 @@ hr {
     margin-right: 0;
 }
 
+.card {
+    border-radius: 8px;
+}
+
+.card-header:first-child {
+    border-radius: 7px;
+}
+
+.card-body {
+    border-radius: 8px;
+}
+
 @media screen and (max-width: 990px) {
     #navBrand {
         position: relative;
