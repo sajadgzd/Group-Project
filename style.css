@@ -1,0 +1,36 @@
+.lazy,
+.money {
+    padding: 50px;
+}
+
+footer {
+    background: red;
+    color: gray;
+    font-size: 12px;
+    padding: 20px 20px;
+    text-align: center;
+}
+
+.food_pic {
+    width: 100%;
+    height: auto;
+}
+
+
+/* body {
+    background: rgb(143, 70, 70);
+    background: linear-gradient(90deg, rgba(143, 70, 70, 0.4248074229691877) 0%, rgba(128, 130, 38, 1) 100%);
+} */
+
+.rounded-buttons {
+    border-radius: 8px !important;
+}
+
+.rounded-circle {
+    width: 90%;
+    height: 200px;
+}
+
+.myMargin {
+    margin: auto;
+}

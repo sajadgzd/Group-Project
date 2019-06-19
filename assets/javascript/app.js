@@ -104,41 +104,47 @@ $(document).ready(function() {
             var restaurantListItem = $(`<li class='list-group-item restaurantHeadName' data-number=${restaurantCount}>`);
             // console.log("NAME: ", response.businesses[i].name);
             restaurantListItem.append(
-                "<span class='label label-primary'>" +
-                restaurantCount +
-                "</span>" +
-                "<strong><h3>" +
+                // "<span class='label label-primary'>" +
+                // restaurantCount +
+                // "</span>" +
+                "<strong><h3 class='text-center'>" +
                 restaurantName +
                 "</strong></h3>"
             );
+            var tempDiv = $("<div class='text-center'>");
+
 
             if (!response.businesses[i].is_closed) {
                 // console.log("It's open now!");
-                restaurantListItem.append(
-                    "<h4> It's <strong>Open</strong> Now! </h4>"
+                tempDiv.append(
+                    "<span class='text-center'>  <strong>Open</strong> Now! </span>"
                 );
             } else {
                 // console.log("It's closed now");
-                restaurantListItem.append(
-                    "<h4> It's <strong>Closed Now!</strong> </h4>"
+                tempDiv.append(
+                    "<span class='text-center'> It's <strong>Closed Now!</strong> </span>"
                 );
             }
             // console.log("Pricing Rate: ", response.businesses[i].price);
             if (response.businesses[i].price) {
-                restaurantListItem.append(
-                    "<h4> Pricing Rate: <strong> " + response.businesses[i].price + "</strong></h4>"
+                tempDiv.append(
+                    "<span class='text-center'> |  <i class='fas fa-money-bill-wave'></i><strong>  " + response.businesses[i].price + "</strong></span>"
                 )
             }
 
             if (response.businesses[i].rating) {
-                restaurantListItem.append(
-                    "<h4> Rating: <strong> " + response.businesses[i].rating + "</strong> /5.0</h4>"
+                tempDiv.append(
+                    "<span class='text-center'> |   <i class='fas fa-star'></i><strong>  " + response.businesses[i].rating + "</strong> /5.0</span>"
                 )
             }
 
+            restaurantListItem.append(tempDiv);
+
+            var tempDiv2 = $("<div class='text-center'>");
+
             // console.log("PHONE NUMBER: ", response.businesses[i].display_phone);
-            restaurantListItem.append(
-                "<h4> Phone Number: <strong> " + response.businesses[i].display_phone + "</strong></h4>"
+            tempDiv2.append(
+                "<span class='text-center'> <i class='fas fa-phone'></i><strong> " + response.businesses[i].display_phone + "</strong></span>"
             );
 
 
@@ -146,9 +152,12 @@ $(document).ready(function() {
             // for (let j = 0; j < response.businesses[i].location.display_address.length; j++) {
             //     console.log(response.businesses[i].location.display_address[j]);
             // }
-            restaurantListItem.append(
-                "<h4> Address:  <strong>" + response.businesses[i].location.display_address.join(", ") + "</strong></h4>"
+
+            tempDiv2.append(
+                "<span> |    <i class='fas fa-map-marker-alt'></i><strong>  " + response.businesses[i].location.display_address.join(", ") + "</strong></span>"
             )
+
+            restaurantListItem.append(tempDiv2);
 
             // console.log("IMAGE LINK: " + response.businesses[i].image_url);
             restaurantListItem.append(
@@ -156,7 +165,10 @@ $(document).ready(function() {
                 `<img src='${response.businesses[i].image_url}' data-num=${restaurantCount}
                 param=${restaurantName.split(' ').join('+')}
                 img-lat=${response.businesses[i].coordinates.latitude} 
-                img-lon=${response.businesses[i].coordinates.longitude} class='text-center food-img' style='height: 200px; width:300px; margin-left:15% ;'/>`
+
+                img-lon=${response.businesses[i].coordinates.longitude} class='text-center food-img' style='margin-left:18%;
+                border: 1px solid #ddd; border-radius: 8px; padding: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                transition: .5s ease; transform: translate(0, 0);'/>`
             )
 
 
@@ -179,7 +191,7 @@ $(document).ready(function() {
                 // console.log(response);
                 // console.log(response.reviews[0].text);
                 $(`li[data-number=${i+1}]`).append(
-                    "<h4> Review: <p> <strong> " + response.reviews[0].text + " </strong></p></h4>"
+                    "<h5 class='text-center'> Yelp Review: <p> <i class='fas fa-comment'></i><strong> " + response.reviews[0].text + " </strong></p></h5>"
                 );
             });
         }
@@ -233,10 +245,10 @@ $(document).ready(function() {
         var GoogleKey = "key=AIzaSyDrxn_A75NUrlGA6RtTj1k5C1Axbc8S9QE";
         var mapAddress = basicGoogleURL + GoogleKey + "&q=" + restaurantQparam + "&center=" + lat + "," + lon;
         console.log(mapAddress);
-        newDivMap = $("<div>");
+        newDivMap = $("<div style='margin-left: 18%;'>");
         newDivMap.append($(`<iframe
-        width="100%" 
-        height="350" 
+        width="300px" 
+        height="200px" 
         frameborder="0" 
         src= ${mapAddress}
         allowfullscreen></iframe>`));
@@ -280,7 +292,7 @@ $(document).ready(function() {
     var edamamId = "28d7bc82";
     var foodChoice = "";
     var recipeImage;
-    
+
     // Make some function that tests to see if there's a space in the food item
     // ingr = food you're looking for
 
@@ -291,7 +303,7 @@ $(document).ready(function() {
         console.log(recipe);
         console.log("hellooooo");
 
-        var recipePlace = $('<div>');
+        // var recipePlace = $('<div>');
         // Replace all spaces in food with %20 because API uses URL-Encode 
         for (i = 0; i < recipe.length; i++) {
             if (recipe[i] === " ") {
@@ -308,45 +320,78 @@ $(document).ready(function() {
 
         .then(function(response) {
             console.log(response);
-        
+
 
             var recipes = response;
 
             // Double check if need to use closing tag stuff
 
             for (i = 0; i < 5; i++) {
-                var singleRecipe = $('<div id="indivRecipe">');
-                var imgElement = $("<img>");
-                // Just put the data inside here
+         
+                var singleRecipe = $('<div id="indivRecipe" class="flip-card">');
+                
+
+                var singleRecipeHoldCards = $('<div class="flip-card-inner">');
+                var frontPic = $('<div class="flip-card-front" style="width:75%">');
+
+                var backIngredients = $('<div class="flip-card-back" style="width:75%">');
+
+
+                singleRecipeHoldCards.append(frontPic);
+                singleRecipeHoldCards.append(backIngredients);
+                singleRecipe.append(singleRecipeHoldCards);
+                
+
+                var imgElement = $('<img class="card-img-top">');
+                frontPic.append(imgElement);
+
+                
                 var name = $('<h3><strong>' + response.hits[i].recipe.label + '</strong></h3>');
-                singleRecipe.append(name);
+                
+                frontPic.append(name);
+                frontPic.append('<p class="hover"> Hover over to see ingredients and steps! </p>');
                 var calories = $('<p>' + Math.round(response.hits[i].recipe.calories) + ' calories </p>');
-                singleRecipe.append(calories);
+                frontPic.append(calories);
 
                 var instructions = response.hits[i].recipe.url;
-                var link = $('<a href="' + instructions + '">Steps</a>');
-                singleRecipe.append(link);
+                
 
                 recipeImage = response.hits[i].recipe.image;
                 imgElement.attr("src", recipeImage);
-                singleRecipe.append(imgElement);
+                frontPic.append(imgElement);
 
-                singleRecipe.append('<h5>Ingredients</h5>');
+
+                backIngredients.append('<h5>Ingredients</h5>');
                 for(j = 0; j < response.hits[i].recipe.ingredientLines.length; j++){
                     var ingredients = $('<ul> <li>' + response.hits[i].recipe.ingredientLines[j] + '</li></ul>');
-                    singleRecipe.append(ingredients);
+                    backIngredients.append(ingredients);
                 }
+
+                var link = $('<a href="' + instructions + '" class="btn btn-success" style="width:70%;">Steps</a>');
+                backIngredients.append(link);
+    
+                
                 // singleRecipe.append('<h5>Nutritional Facts</h5>');
                 // for(h = 0; h < 9; h++){
                 //     var nutrition = response.hits[i].recipe.digest[h].label;
                 //     singleRecipe.append('<ul><li>Total ' + nutrition +  ' = ' + Math.round(response.hits[i].recipe.digest[h].total) + '</li>');
                 // }
-                
 
                 // $("#indivRecipe").html(response.data);
-                recipePlace.append(singleRecipe);
-                recipePlace.appendTo("#recepies-section");
+                // recipePlace.append(singleRecipe);
+                singleRecipe.appendTo("#recepies-section");
             }
+
+
+{/* <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div> */}
+
 
 
 
