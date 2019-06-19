@@ -8,6 +8,8 @@
 
     <title>IN OR OUT</title>
     <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -120,7 +122,7 @@
                     <img src="assets/images/fancydessert.jpg" alt="dessert" class='food_pic'>
                 </div>
                 <div class="carousel-caption">
-                    <h3 class="display-2">What Would You Like to Eat?</h3>
+                    <h3 class="display-2" data-aos="flip-left" data-aos-duration="3000">What Would You Like to Eat?</h3>
                     <form class="form-inline">
                         <div class="input-group myMargin ">
                             <label class="sr-only" for="inlineFormSearch">Search</label>
@@ -139,7 +141,7 @@
     <div class="container">
         <div class="row ">
             <div class="col-md-6 dine-out restaurants">
-                <img src="assets/images/diningout.jpeg" alt="Dine out" class="rounded-circle">
+                <img src="assets/images/diningout.jpeg" alt="Dine out" class="rounded-circle" data-aos="fade-down-right" data-aos-duration="3000">
                 <br>
                 <div class="card">
                     <!-- card Heading for the retrieved articles box -->
@@ -154,7 +156,7 @@
                 </div>
             </div>
             <div class="col-md-6 save-money recipes">
-                <img src="assets/images/recipes.jpg" alt="Recipes" class="rounded-circle">
+                <img src="assets/images/recipes.jpg" alt="Recipes" class="rounded-circle" data-aos="fade-down-left" data-aos-duration="3000">
                 <br>
                 <div class="card ">
                     <!-- card Heading for the retrieved articles box -->
@@ -251,6 +253,11 @@
 
 
     <script type="text/javascript " src="assets/javascript/app.js "></script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 
 </body>
 
