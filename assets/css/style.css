@@ -1,4 +1,4 @@
-    * {
+    body {
         font-family: 'Prata', serif;
     }
     
@@ -40,11 +40,16 @@
     
     .dine-out,
     .save-money {
-        padding: 50px;
+        padding: 20px;
+    }
+    
+    image.dine-out,
+    image.save-money {
+        margin-bottom: 100px;
     }
     
     footer {
-        background: rgb(99, 1, 1);
+        background: #343a40;
         color: wheat;
         font-size: 12px;
         padding: 20px 20px;
@@ -68,6 +73,9 @@
     .rounded-circle {
         width: 90%;
         height: 200px;
+        border-radius: 8px !important;
+        margin-left: 20px;
+        margin-bottom: 20px;
     }
     
     .myMargin {
@@ -75,8 +83,9 @@
     }
     
     .contact-form {
-        color: rgb(216, 124, 124);
-        margin-top: 100px;
+        color: rgb(179, 104, 141);
+        text-shadow: .5px .5px rgb(80, 51, 51);
+        margin-top: 50px;
         margin-bottom: 30px;
         padding: 20px;
         box-shadow: 0px 0px 5px 3px rgb(165, 99, 99);
@@ -88,7 +97,7 @@
     }
     
     .btn-block {
-        color: rgb(216, 124, 124);
+        color: rgb(202, 152, 185);
         background: white;
         font-size: 18px;
     }
@@ -114,4 +123,12 @@
             position: relative;
             right: 0;
         }
+        #contact-form {
+            width: 90%;
+        }
     }
+    /* @media screen and (min-width: 375px) {
+        #contact-form {
+            width: 100%;
+        }
+    } */
