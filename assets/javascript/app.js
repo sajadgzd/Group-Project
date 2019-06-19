@@ -368,6 +368,7 @@ $(document).ready(function() {
                 }
 
                 var link = $('<a href="' + instructions + '" class="btn btn-success" style="width:70%;">Steps</a>');
+                link.attr("target", "_blank");
                 backIngredients.append(link);
 
                 // singleRecipe.append('<h5>Nutritional Facts</h5>');
