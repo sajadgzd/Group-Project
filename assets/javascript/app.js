@@ -52,7 +52,8 @@ if ("geolocation" in navigator) {
 // ALL CODES GOES INSIDE OF THIS .ready() FUNCTION::::::::::
 $(document).ready(function() {
 
-    // https: //api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972
+
+
     var restaurantURLBase = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/";
     var term = "";
     var restaurantURL;
@@ -87,7 +88,7 @@ $(document).ready(function() {
             // console.log("ID# : ", response.businesses[i].id);
             reviewURL[i] = restaurantURLBase + response.businesses[i].id + "/reviews";
             // console.log(reviewURL);
-            var restaurantList = $(`<ul>`);
+            var restaurantList = $(`<ul  data-aos='fade-right' data-aos-duration="2000">`);
 
 
             // Getting Business Info
@@ -104,9 +105,6 @@ $(document).ready(function() {
             var restaurantListItem = $(`<li class='list-group-item restaurantHeadName' data-number=${restaurantCount}>`);
             // console.log("NAME: ", response.businesses[i].name);
             restaurantListItem.append(
-                // "<span class='label label-primary'>" +
-                // restaurantCount +
-                // "</span>" +
                 "<strong><h3 class='text-center'>" +
                 restaurantName +
                 "</strong></h3>"
@@ -207,6 +205,23 @@ $(document).ready(function() {
 
         // Empty the region associated with the articles
         clear();
+
+        //  form validation
+        var x = $("#search-term").val().trim();
+        console.log("value of x::::::", x);
+        if (x == "") {
+            $(".invalid").css("display", "block");
+            return false;
+        }
+        if (x !== "") {
+            if (["/", "^", "\'", "*", "!"].includes(x)) {
+                $(".invalid").css("display", "block");
+                return false;
+            } else {
+                $(".invalid").css("display", "none");
+            }
+        }
+
 
         recipeLooker();
 
@@ -327,8 +342,8 @@ $(document).ready(function() {
             // Double check if need to use closing tag stuff
 
             for (i = 0; i < 5; i++) {
-         
-                var singleRecipe = $('<div id="indivRecipe" class="flip-card">');
+
+                var singleRecipe = $('<div id="indivRecipe" class="flip-card"  data-aos="fade-left" data-aos-duration="2000">');
 
 
                 var singleRecipeHoldCards = $('<div class="flip-card-inner">');
