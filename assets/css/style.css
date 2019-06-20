@@ -172,7 +172,7 @@ img.food-img {
     width: 300px;
     height: 200px;
     margin: 0 auto;
-    margin-left: 18%;
+    /* margin-left: 18%; */
 }
 
 iframe {
