@@ -16,13 +16,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/3a6781b4ed.js"></script>
-
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Mali&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
 
     <!-- Firebase References -->
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
@@ -30,20 +32,15 @@
 
     <!-- Moment.js Reference -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Lobster+Two|Parisienne&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
     <!-- Don't Delete -->
-    <!-- <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-        <div class="container-fluid"> -->
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div id="navBrand">
-            <!-- <div class="container"> -->
             <a id="logo" href="#"><img src="assets/images/logo.png" alt="In or Out"></a>
         </div>
         <div id="buttons">
@@ -57,10 +54,10 @@
                         <a class="nav-link" href="#top">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Restaurants</a>
+                        <a class="nav-link" href="#search-term">Restaurants</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Recipes</a>
+                        <a class="nav-link" href="#search-term">Recipes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="team.html">Team</a>
@@ -71,35 +68,9 @@
                 </ul>
             </div>
         </div>
-        <!-- </div> -->
     </nav>
-    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
-                  <span class="sr-only">(current)</span>
-                </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav> -->
-
 
     <!-- Image Slider -->
-
 
     <div id="slides" class="carousel slide" data-ride="carousel">
         <ul class="carousel-indicators">
@@ -175,75 +146,8 @@
                 </div>
             </div>
         </div>
-        <!-- Restaurants or Recipes -->
-
-
-        <!-- <div class="row"> -->
-        <!-- <div class="col-md-6 retaurants">
-                <div class="card">
-                    card Heading for the retrieved articles box
-        <div class="card-header"> -->
-        <!-- <strong>
-                            Restaurants Nearby
-                             </strong>
-                    </div> -->
-        <!-- This main card will hold each of the resulting articles -->
-        <!-- <div class="card-body" id="restaurant-section">
-                    </div>
-                </div>
-            </div> -->
-        <!-- <div class="col-md-6 recipes"> -->
-        <!-- <div class="card ">
-            card Heading for the retrieved articles box
-            <div class="card-header">
-                <strong> -->
-        <!-- Recipes
-                             </strong>
-            </div> -->
-        <!-- This main card will hold each of the resulting articles -->
-        <!-- <div class="card-body" id="recepies-section">
-            </div>
-        </div> -->
-        <!-- </div> -->
 
     </div>
-
-
-
-    <!-- Contact Info -->
-
-    <!-- <div class="container contact-form" id="contact-form">
-        <h1>Contact Us!</h1>
-        <hr>
-
-        <div class="row">
-            <div class="col-md-4">
-                <address>1095  Layman Court <br> New York, NY 10001</address>
-                <p>Email: inorout@foodie.com</p>
-                <p>Phone: 678-362-5114</p>
-            </div>
-
-        </div class="col-md-4">
-
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control">
-        </div>
-
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control">
-        </div>
-
-        <div class="form-group">
-            <label>Message</label>
-            <textarea type="text" class="form-control" rows="7"></textarea>
-        </div>
-
-        <div class="form-group">
-            <button class="btn btn-primary btn-block"> <strong>Send</strong></button>
-        </div>
-    </div> -->
 
     <!-- Footer -->
 
@@ -252,9 +156,6 @@
     </footer>
 
     <!-- Don't delete -->
-
-
-
 
     <script type="text/javascript " src="assets/javascript/app.js "></script>
 
