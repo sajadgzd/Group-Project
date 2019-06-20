@@ -8,6 +8,8 @@
 
     <title>IN OR OUT</title>
     <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -20,6 +22,9 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
 
     <!-- Firebase References -->
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
@@ -89,12 +94,15 @@
                     <img src="assets/images/fancydessert.jpg" alt="dessert" class='food_pic'>
                 </div>
                 <div class="carousel-caption">
-                    <h3 class="display-2">What Would You Like to Eat?</h3>
-                    <form class="form-inline">
+                    <h3 class="display-2" data-aos="flip-left" data-aos-duration="3000">What Would You Like to Eat?</h3>
+                    <form class="form-inline" name="myForm" novalidate>
                         <div class="input-group myMargin ">
                             <label class="sr-only" for="inlineFormSearch">Search</label>
-                            <input type="text" class="form-control mb-2 mr-sm-2 rounded-buttons" id="search-term" placeholder="Restaurants & Recipes">
-                            <button type="submit" class="btn btn-primary mb-2" id="run-search">I'm Starved!</button>
+                            <input type="text" class="form-control mb-2 mr-sm-2 rounded-buttons" id="search-term" placeholder="Restaurants & Recipes" required>
+                            <div class="invalid" style="width: 290px">
+                                Please provide a valid name
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2" id="run-search" value="Submit">I'm Starved!</button>
                         </div>
                     </form>
                 </div>
@@ -108,7 +116,7 @@
     <div class="container">
         <div class="row ">
             <div class="col-md-6 dine-out restaurants">
-                <img src="assets/images/diningout.jpeg" alt="Dine out" class="rounded-circle">
+                <img src="assets/images/diningout.jpeg" alt="Dine out" class="rounded-circle" data-aos="fade-down-right" data-aos-duration="3000">
                 <br>
                 <div class="card">
                     <!-- card Heading for the retrieved articles box -->
@@ -123,7 +131,7 @@
                 </div>
             </div>
             <div class="col-md-6 save-money recipes">
-                <img src="assets/images/recipes.jpg" alt="Recipes" class="rounded-circle">
+                <img src="assets/images/recipes.jpg" alt="Recipes" class="rounded-circle" data-aos="fade-down-left" data-aos-duration="3000">
                 <br>
                 <div class="card ">
                     <!-- card Heading for the retrieved articles box -->
@@ -150,6 +158,11 @@
     <!-- Don't delete -->
 
     <script type="text/javascript " src="assets/javascript/app.js "></script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 
 </body>
 
