@@ -105,9 +105,6 @@ $(document).ready(function() {
             var restaurantListItem = $(`<li class='list-group-item restaurantHeadName' data-number=${restaurantCount}>`);
             // console.log("NAME: ", response.businesses[i].name);
             restaurantListItem.append(
-                // "<span class='label label-primary'>" +
-                // restaurantCount +
-                // "</span>" +
                 "<strong><h3 class='text-center'>" +
                 restaurantName +
                 "</strong></h3>"
