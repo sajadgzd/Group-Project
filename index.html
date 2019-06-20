@@ -23,6 +23,7 @@
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
     <!-- Firebase References -->
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
@@ -123,11 +124,14 @@
                 </div>
                 <div class="carousel-caption">
                     <h3 class="display-2" data-aos="flip-left" data-aos-duration="3000">What Would You Like to Eat?</h3>
-                    <form class="form-inline">
+                    <form class="form-inline" name="myForm" novalidate>
                         <div class="input-group myMargin ">
                             <label class="sr-only" for="inlineFormSearch">Search</label>
-                            <input type="text" class="form-control mb-2 mr-sm-2 rounded-buttons" id="search-term" placeholder="Restaurants & Recipes">
-                            <button type="submit" class="btn btn-primary mb-2" id="run-search">I'm Starved!</button>
+                            <input type="text" class="form-control mb-2 mr-sm-2 rounded-buttons" id="search-term" placeholder="Restaurants & Recipes" required>
+                            <div class="invalid" style="width: 290px">
+                                Please provide a valid name
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2" id="run-search" value="Submit">I'm Starved!</button>
                         </div>
                     </form>
                 </div>

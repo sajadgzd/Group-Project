@@ -52,6 +52,9 @@ if ("geolocation" in navigator) {
 // ALL CODES GOES INSIDE OF THIS .ready() FUNCTION::::::::::
 $(document).ready(function() {
 
+
+
+
     // https: //api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972
     var restaurantURLBase = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/";
     var term = "";
@@ -207,6 +210,23 @@ $(document).ready(function() {
 
         // Empty the region associated with the articles
         clear();
+
+        //  form validation
+        var x = $("#search-term").val().trim();
+        console.log("value of x::::::", x);
+        if (x == "") {
+            $(".invalid").css("display", "block");
+            return false;
+        }
+        if (x !== "") {
+            if (["/", "^", "\'", "*", "!"].includes(x)) {
+                $(".invalid").css("display", "block");
+                return false;
+            } else {
+                $(".invalid").css("display", "none");
+            }
+        }
+
 
         recipeLooker();
 
