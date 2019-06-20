@@ -152,7 +152,6 @@ img.food-img {
     width: 300px;
     height: 200px;
     margin: 0 auto;
-    /* margin-left: 18%; */
 }
 
 iframe {
@@ -162,7 +161,6 @@ iframe {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.021);
     transition: .5s ease;
     transform: translate(0, 0);
-    /* margin-left: 17%; */
 }
 
 img.food-img:hover {
