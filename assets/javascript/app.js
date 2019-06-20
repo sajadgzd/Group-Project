@@ -54,8 +54,6 @@ $(document).ready(function() {
 
 
 
-
-    // https: //api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972
     var restaurantURLBase = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/";
     var term = "";
     var restaurantURL;
